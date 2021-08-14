@@ -6,6 +6,7 @@ import factory from "../ethereum/Factory";
 import styles from "./Logincreator.module.css";
 
 const Logincreator = () => {
+  //Creator Signup
   const [keystroke, keystrikeSet] = useState("");
   const [invalidstate, setinvalidstate] = useState(false);
   const [touched, Settouched] = useState(false);
