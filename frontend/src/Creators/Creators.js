@@ -30,6 +30,8 @@ const Creators = React.memo(props => {
     <div>
        {creators.creators?.map((creator) => (
        <Creator
+       key={creator._id}
+       id={creator._id}
        name={creator.name}/>
        ))}
     </div>
