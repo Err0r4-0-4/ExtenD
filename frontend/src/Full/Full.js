@@ -23,7 +23,7 @@ const Full = React.memo(props => {
   return (
       <div>
 
-       <div>Full</div>
+       <img></img>
    </div>
   );
 });
