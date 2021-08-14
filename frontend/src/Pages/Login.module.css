@@ -1,0 +1,280 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+.page {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.header {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  height: 85vh;
+}
+.logo_name {
+  height: 15vh;
+  width: 100%;
+  max-width: 1140px;
+  margin: 10px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 100%;
+  position: relative;
+}
+.logo {
+  height: 15vh;
+  margin: 0 20px 0 0;
+}
+.select {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  padding: 2px 2px;
+  border: 1px solid rgb(6, 6, 128);
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  margin: 0 20px;
+}
+.select2 {
+  position: absolute;
+  bottom: -30px;
+  right: 0;
+  padding: 2px 2px;
+  border: 1px solid rgb(6, 6, 128);
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  margin: 0 20px;
+}
+
+.button1 {
+  background-color: white;
+  letter-spacing: 1px;
+  color: rgb(6, 6, 128);
+  padding: 10px;
+  border-radius: 100px;
+  border: none;
+  font-size: 16px;
+  min-width: 100px;
+}
+.button2 {
+  letter-spacing: 1px;
+  color: white;
+  background-color: rgb(6, 6, 128);
+  padding: 10px;
+  border-radius: 100px;
+  font-size: 16px;
+  min-width: 100px;
+}
+.blood {
+  color: rgb(241, 117, 117);
+}
+.box {
+  font-size: 20px;
+}
+.do,
+.do2 {
+  display: block;
+}
+.form {
+  width: 50%;
+  margin: 10px auto 0;
+  flex: 55%;
+  height: 65vh;
+  padding: 100px 20px 0;
+  border-right: 1px solid rgb(219, 219, 219);
+}
+.feildset {
+  position: relative;
+}
+
+.form .feild {
+  display: block;
+  width: 80%;
+  margin: 20px auto 44.5px;
+  padding: 10px 10px 5px;
+  border: none;
+  border-bottom: 2px solid rgb(6, 6, 128);
+}
+.form .feild:focus {
+  outline: none;
+  border: none;
+  padding: 10px 10px 4px;
+  border-bottom: 3px solid rgb(6, 6, 128);
+  box-shadow: 0px 1px 0px rgba(92, 92, 168);
+  transition: all ease 0.2s;
+}
+.form .feild:focus::placeholder {
+  letter-spacing: 1px;
+}
+
+.form button,
+.form .buttonred {
+  display: block;
+  width: 80%;
+  margin: 60px auto 0;
+  padding: 10px;
+  background-color: rgb(6, 6, 128);
+  border: none;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  transition: all ease 0.3s;
+  -webkit-transition: all ease 0.3s;
+  -moz-transition: all ease 0.3s;
+  -ms-transition: all ease 0.3s;
+  -o-transition: all ease 0.3s;
+}
+
+.form .buttonred {
+  background-color: rgb(196, 47, 47);
+}
+
+.form button:hover {
+  background-color: rgb(37, 37, 190);
+  letter-spacing: 2px;
+}
+.form .buttonred:hover {
+  background-color: rgb(175, 19, 19);
+}
+.form .anchor {
+  width: 80%;
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: space-between;
+}
+.form a:visited,
+.form a:link {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 300;
+  margin: 0 5px;
+  transition: all ease 0.2s;
+  -webkit-transition: all ease 0.2s;
+  -moz-transition: all ease 0.2s;
+  -ms-transition: all ease 0.2s;
+  -o-transition: all ease 0.2s;
+}
+
+.form a:hover,
+.form a:active {
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: rgb(6, 6, 128);
+  margin: 0 -2px;
+}
+.form .error {
+  display: block;
+  width: 80%;
+  margin: 20px auto 44.5px;
+  padding: 10px 10px 5px;
+  border: none;
+  border-bottom: 2px solid rgb(110, 23, 23);
+}
+.form .error2 {
+  color: rgb(110, 23, 23);
+  font-size: 16px;
+
+  margin: auto;
+  text-align: right;
+  position: absolute;
+  right: 20%;
+  top: 10px;
+}
+.form .error::placeholder {
+  color: rgb(110, 23, 23);
+}
+.form .error:focus {
+  outline: none;
+  border: none;
+  padding: 10px 10px 4px;
+  border-bottom: 3px solid rgb(110, 23, 23);
+  box-shadow: 0px 1px 0px rgba(172, 101, 101, 0.712);
+}
+.profile {
+  width: 40%;
+  margin: auto;
+  flex: 45%;
+  height: 65vh;
+  padding: 0 80px;
+  overflow: hidden;
+  position: relative;
+}
+.img2 {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(6, 6, 128);
+  height: 11vh;
+  min-height: 75px;
+}
+
+.footer p {
+  margin: 25px 0 0 40px;
+  color: white;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+.footer ul {
+  display: flex;
+  justify-content: end;
+  margin: 0 20px 0 0;
+}
+
+.footer ul li {
+  list-style-type: none;
+  padding: 4px 5px;
+  margin: 22px 5px;
+  transition: all ease-out 0.2s;
+  -webkit-transition: all ease-out 0.2s;
+  -moz-transition: all ease-out 0.2s;
+  -ms-transition: all ease-out 0.2s;
+  -o-transition: all ease-out 0.2s;
+}
+
+.footer ul li a:link,
+.footer ul li a:visited,
+.footer ul li a:hover,
+.footer ul li a:active {
+  padding: 15px 10px;
+  color: white;
+  font-size: 18px;
+}
+
+.footer ul li:hover {
+  border-bottom: 1px solid rgb(226, 226, 226);
+  margin: 12px 5px;
+}
