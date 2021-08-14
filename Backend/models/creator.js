@@ -19,6 +19,10 @@ const creatorSchema = new schema({
     type: String,
     require: true,
   },
+  contractAddress: {
+    type: String,
+    require: true,
+  },
   goodAt: {
     type: String,
     require: true,

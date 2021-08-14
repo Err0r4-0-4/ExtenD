@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import styles from "../Pages/Login.module.css";
 import { BsFillExclamationCircleFill } from "react-icons/bs";
+import axios from 'axios'
 
-const Logincreator = () => {
+import web3 from '../ethereum/web3'
+import factory from '../ethereum/Factory'
+import styles from "../Pages/Login.module.css";
+
+const Logincreator =() => {
+
   const [keystroke, keystrikeSet] = useState("");
   const [invalidstate, setinvalidstate] = useState(false);
   const [touched, Settouched] = useState(false);
@@ -65,7 +70,9 @@ const Logincreator = () => {
       setinvalidstate4(true);
     } else setinvalidstate4(false);
   };
-  const formsubmission = (e) => {
+
+
+  const formsubmission = async(e) => {
     e.preventDefault();
     Settouched(true);
     if (keystroke.trim().length === 0) {
@@ -102,7 +109,45 @@ const Logincreator = () => {
       console.log(keystroke3);
       keystrikeSet4("");
     }
+
+    const accounts = await web3.eth.getAccounts();
+    await factory.methods
+    .createCreator(keystroke3)
+    .send({
+      from: accounts[0],
+    });
+
+    const count = await factory.methods.creatorCount().call();
+
+    const address = await factory.methods
+    .deployedCreators(count-1)
+    .call();
+
+    // console.log(address)
+
+    const data = {
+      name: keystroke,
+      email: keystroke2,
+      password: keystroke4,
+      account: keystroke3,
+      contractAddress: address
+    };
+
+    axios
+      .post('http://localhost:3000/creator/signup', data)
+      .then((res) => {
+        console.log(res);
+        // this.setState({loading: false})
+        // window.location.reload(false);
+      })
+      .then((err) => {
+        console.log(err);
+        // this.setState({loading: false})
+        // window.location.reload(false);
+      });
+   
   };
+
 
   const isInvalid = touched && invalidstate;
   const isInvalid2 = touched2 && invalidstate2;
@@ -160,8 +205,8 @@ const Logincreator = () => {
         <input
           type="password"
           placeholder="Password"
-          value={keystroke3}
-          className={isInvalid3 ? styles.error : styles.feild}
+          value={keystroke4}
+          className={isInvalid4 ? styles.error : styles.feild}
           onChange={changedevent4}
           onBlur={blurevent4}
         />

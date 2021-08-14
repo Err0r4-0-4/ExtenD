@@ -1,17 +1,17 @@
 const Creator = require("../models/creator");
 const jwt = require("jsonwebtoken");
-let admin = require("firebase-admin");
-let Storage = require("@google-cloud/storage");
+// let admin = require("firebase-admin");
+// let Storage = require("@google-cloud/storage");
 let config = require("../config.json");
 
-let db = admin.firestore();
+// let db = admin.firestore();
 
-const storage = new Storage({
-  projectId: config.project_id,
-  // keyFilename: "./config/config.json"
-});
+// const storage = new Storage({
+//   projectId: config.project_id,
+//   keyFilename: "./config/config.json"
+// });
 
-const bucket = storage.bucket(`${config.project_id}.appspot.com`);
+// const bucket = storage.bucket(`${config.project_id}.appspot.com`);
 
 exports.signup = async (req, res, next) => {
   let email = req.body.email;
