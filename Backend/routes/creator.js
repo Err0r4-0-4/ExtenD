@@ -6,7 +6,7 @@ const route = express.Router();
 
 route.post("/signup", creatorController.signup);
 route.post("/login", creatorController.login);
-route.get("/creatorById", creatorController.getCreatorById);
+route.post("/creatorById", creatorController.getCreatorById);
 route.get("/creators", creatorController.getCreators);
 route.post("/createMerchandise", creatorController.createMerchandise);
 module.exports = route;
