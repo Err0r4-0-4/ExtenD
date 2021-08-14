@@ -97,17 +97,10 @@
 }
 .form {
   width: 50%;
-<<<<<<< HEAD
-  margin: auto;
-  flex: 55%;
-  height: 65vh;
-  padding: 10px 20px 0;
-=======
   margin: 10px auto 0;
   flex: 55%;
   height: 65vh;
   padding: 100px 20px 0;
->>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
   border-right: 1px solid rgb(219, 219, 219);
 }
 .feildset {

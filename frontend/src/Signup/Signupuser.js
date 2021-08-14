@@ -1,16 +1,9 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
-import axios from 'axios'
-=======
->>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
 import styles from "../Pages/Login.module.css";
+import axios from 'axios'
 import { BsFillExclamationCircleFill } from "react-icons/bs";
 
 const Signupuser = () => {
-<<<<<<< HEAD
-=======
-  //Public Login
->>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
   const [keystroke, keystrikeSet] = useState("");
   const [invalidstate, setinvalidstate] = useState(false);
   const [touched, Settouched] = useState(false);
@@ -70,7 +63,6 @@ const Signupuser = () => {
       keystrikeSet("");
     }
 
-<<<<<<< HEAD
     const data = {
       email: keystroke,
       password: keystroke3
@@ -88,8 +80,7 @@ const Signupuser = () => {
         // this.setState({loading: false})
         // window.location.reload(false);
       });
-=======
->>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
+
     // Settouched2(true);
     // if (keystroke2.trim().length === 0) {
     //   setinvalidstate2(true);

@@ -1,24 +1,14 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
-import axios from 'axios'
-=======
->>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
 import styles from "../Pages/Login.module.css";
+import axios from 'axios'
 import { BsFillExclamationCircleFill } from "react-icons/bs";
 
 const Loginuser = () => {
-<<<<<<< HEAD
-  const [keystroke, keystrikeSet] = useState("");
-  const [invalidstate, setinvalidstate] = useState(false);
-  const [touched, Settouched] = useState(false);
-
-=======
   //Public SignUp
   const [keystroke, keystrikeSet] = useState("");
   const [invalidstate, setinvalidstate] = useState(false);
   const [touched, Settouched] = useState(false);
   console.log("Public signup");
->>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
   const changedevent = (e) => {
     keystrikeSet(e.target.value);
     Settouched(false);
@@ -31,23 +21,6 @@ const Loginuser = () => {
     } else setinvalidstate(false);
   };
 
-<<<<<<< HEAD
-  //   const [keystroke2, keystrikeSet2] = useState("");
-  //   const [invalidstate2, setinvalidstate2] = useState(false);
-  //   const [touched2, Settouched2] = useState(false);
-
-  //   const changedevent2 = (e) => {
-  //     keystrikeSet2(e.target.value);
-  //     Settouched2(false);
-  //   };
-
-  //   const blurevent2 = () => {
-  //     Settouched2(true);
-  //     if (keystroke2.trim().length === 0) {
-  //       setinvalidstate2(true);
-  //     } else setinvalidstate2(false);
-  //   };
-=======
   const [keystroke2, keystrikeSet2] = useState("");
   const [invalidstate2, setinvalidstate2] = useState(false);
   const [touched2, Settouched2] = useState(false);
@@ -63,7 +36,6 @@ const Loginuser = () => {
       setinvalidstate2(true);
     } else setinvalidstate2(false);
   };
->>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
 
   const [keystroke3, keystrikeSet3] = useState("");
   const [invalidstate3, setinvalidstate3] = useState(false);
@@ -92,7 +64,6 @@ const Loginuser = () => {
       keystrikeSet("");
     }
 
-<<<<<<< HEAD
     const data = {
       email: keystroke,
       password: keystroke3
@@ -119,7 +90,6 @@ const Loginuser = () => {
     //   console.log(keystroke2);
     //   keystrikeSet2("");
     // }
-=======
     Settouched2(true);
     if (keystroke2.trim().length === 0) {
       setinvalidstate2(true);
@@ -128,7 +98,6 @@ const Loginuser = () => {
       console.log(keystroke2);
       keystrikeSet2("");
     }
->>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
 
     Settouched3(true);
     if (keystroke3.trim().length === 0) {
@@ -141,24 +110,18 @@ const Loginuser = () => {
   };
 
   const isInvalid = touched && invalidstate;
-<<<<<<< HEAD
   //   const isInvalid2 = touched2 && invalidstate2;
-=======
   const isInvalid2 = touched2 && invalidstate2;
->>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
   const isInvalid3 = touched3 && invalidstate3;
 
   return (
     <form className={styles.form} onSubmit={formsubmission}>
       <div className={styles.feildset}>
         <input
-<<<<<<< HEAD
           type="email"
           placeholder="Email ID"
-=======
           type="text"
           placeholder="Full Name"
->>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
           value={keystroke}
           className={isInvalid ? styles.error : styles.feild}
           onChange={changedevent}
@@ -170,17 +133,10 @@ const Loginuser = () => {
           </p>
         )}
       </div>
-<<<<<<< HEAD
-      {/* <div className={styles.feildset}>
-        <input
-          type="text"
-          placeholder="PIN Code"
-=======
       <div className={styles.feildset}>
         <input
           type="email"
           placeholder="Email ID"
->>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
           value={keystroke2}
           className={isInvalid2 ? styles.error : styles.feild}
           onChange={changedevent2}
@@ -191,11 +147,7 @@ const Loginuser = () => {
             <BsFillExclamationCircleFill />
           </p>
         )}
-<<<<<<< HEAD
-      </div> */}
-=======
       </div>
->>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
       <div className={styles.feildset}>
         <input
           type="password"

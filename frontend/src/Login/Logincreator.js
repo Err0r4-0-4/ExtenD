@@ -1,21 +1,12 @@
 import React, { useState } from "react";
 import { BsFillExclamationCircleFill } from "react-icons/bs";
 import axios from "axios";
-<<<<<<< HEAD
-
-import web3 from "../ethereum/web3";
-import factory from "../ethereum/Factory";
-import styles from "../Pages/Login.module.css";
-
-const Logincreator = () => {
-=======
 import web3 from "../ethereum/web3";
 import factory from "../ethereum/Factory";
 import styles from "./Logincreator.module.css";
 
 const Logincreator = () => {
   //Creator Signup
->>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
   const [keystroke, keystrikeSet] = useState("");
   const [invalidstate, setinvalidstate] = useState(false);
   const [touched, Settouched] = useState(false);
@@ -245,14 +236,8 @@ const Logincreator = () => {
       </div>
 
       <div className={styles.feildset}>
-<<<<<<< HEAD
-        <input
-          type="text"
-          placeholder="Account"
-=======
         <textarea
           placeholder="Feild of Interest"
->>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
           value={keystroke5}
           className={isInvalid5 ? styles.error : styles.feild}
           onChange={changedevent5}
