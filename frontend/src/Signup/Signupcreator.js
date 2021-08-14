@@ -1,10 +1,18 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import axios from 'axios'
 import styles from "../Pages/Login.module.css";
 import { BsFillExclamationCircleFill } from "react-icons/bs";
 
 
 const Signupcreator = () => {
+=======
+import styles from "../Pages/Login.module.css";
+import { BsFillExclamationCircleFill } from "react-icons/bs";
+
+const Signupcreator = () => {
+  //Creator Login
+>>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
   const [keystroke, keystrikeSet] = useState("");
   const [invalidstate, setinvalidstate] = useState(false);
   const [touched, Settouched] = useState(false);
@@ -64,6 +72,7 @@ const Signupcreator = () => {
       keystrikeSet("");
     }
 
+<<<<<<< HEAD
     const data = {
       email: keystroke,
       password: keystroke3
@@ -82,6 +91,8 @@ const Signupcreator = () => {
         // window.location.reload(false);
       });
 
+=======
+>>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
     // Settouched2(true);
     // if (keystroke2.trim().length === 0) {
     //   setinvalidstate2(true);

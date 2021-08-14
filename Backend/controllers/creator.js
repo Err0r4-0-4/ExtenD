@@ -1,5 +1,6 @@
 const Creator = require("../models/creator");
 const jwt = require("jsonwebtoken");
+<<<<<<< HEAD
 // let admin = require("firebase-admin");
 // let Storage = require("@google-cloud/storage");
 let config = require("../config.json");
@@ -12,6 +13,20 @@ let config = require("../config.json");
 // });
 
 // const bucket = storage.bucket(`${config.project_id}.appspot.com`);
+=======
+//let admin = require("firebase-admin");
+//let Storage = require("@google-cloud/storage");
+//let config = require("../config.json");
+
+//let db = admin.firestore();
+
+// const storage = new Storage({
+//   projectId: config.project_id,
+//   // keyFilename: "./config/config.json"
+// });
+
+//const bucket = storage.bucket(`${config.project_id}.appspot.com`);
+>>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
 
 exports.signup = async (req, res, next) => {
   let email = req.body.email;
@@ -69,4 +84,17 @@ exports.getCreators = async (req, res, next) => {
   }
 };
 
+<<<<<<< HEAD
+=======
+exports.getCreatorById = async (req, res, next) => {
+  try {
+    let creator = await Creator.findById(req.query.id);
+    res.status(200).send({ creator: creator });
+    return;
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
+
+>>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
 exports.createMerchandise = (req, res, next) => {};

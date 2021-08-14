@@ -23,7 +23,11 @@ const Full = React.memo(props => {
   return (
       <div>
 
+<<<<<<< HEAD
        <img></img>
+=======
+       <div>Full</div>
+>>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
    </div>
   );
 });

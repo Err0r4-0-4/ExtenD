@@ -2,7 +2,11 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+<<<<<<< HEAD
 // var admin = require("firebase");
+=======
+// var admin = require("firebase-admin");
+>>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
 const fileuploader = require("express-fileupload");
 //const user =  require("./routes/user");
 const creatorRoute = require("./routes/creator");
@@ -28,11 +32,19 @@ const app = express();
 //   measurementId: "G-GPZ1PPRHMF",
 // };
 // admin.initializeApp(firebaseConfig);
+<<<<<<< HEAD
 // var serviceAccount = require("./config.json");
 // admin.initializeApp({
 //   credential: admin.credential.cert(serviceAccount),
 //   databaseURL: "https://test-817a8.firebaseio.com",
 // });
+=======
+// // var serviceAccount = require("./config.json");
+// // admin.initializeApp({
+// //   credential: admin.credential.cert(serviceAccount),
+// //   databaseURL: "https://test-817a8.firebaseio.com",
+// // });
+>>>>>>> 4d933fe7497cfeba3d7224a233f9044051b432df
 
 // app.use(fileuploader());
 app.use(cors());
