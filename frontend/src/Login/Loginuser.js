@@ -6,7 +6,7 @@ const Loginuser = () => {
   const [keystroke, keystrikeSet] = useState("");
   const [invalidstate, setinvalidstate] = useState(false);
   const [touched, Settouched] = useState(false);
-
+  console.log("Public signup");
   const changedevent = (e) => {
     keystrikeSet(e.target.value);
     Settouched(false);
@@ -19,21 +19,21 @@ const Loginuser = () => {
     } else setinvalidstate(false);
   };
 
-  //   const [keystroke2, keystrikeSet2] = useState("");
-  //   const [invalidstate2, setinvalidstate2] = useState(false);
-  //   const [touched2, Settouched2] = useState(false);
+  const [keystroke2, keystrikeSet2] = useState("");
+  const [invalidstate2, setinvalidstate2] = useState(false);
+  const [touched2, Settouched2] = useState(false);
 
-  //   const changedevent2 = (e) => {
-  //     keystrikeSet2(e.target.value);
-  //     Settouched2(false);
-  //   };
+  const changedevent2 = (e) => {
+    keystrikeSet2(e.target.value);
+    Settouched2(false);
+  };
 
-  //   const blurevent2 = () => {
-  //     Settouched2(true);
-  //     if (keystroke2.trim().length === 0) {
-  //       setinvalidstate2(true);
-  //     } else setinvalidstate2(false);
-  //   };
+  const blurevent2 = () => {
+    Settouched2(true);
+    if (keystroke2.trim().length === 0) {
+      setinvalidstate2(true);
+    } else setinvalidstate2(false);
+  };
 
   const [keystroke3, keystrikeSet3] = useState("");
   const [invalidstate3, setinvalidstate3] = useState(false);
@@ -62,14 +62,14 @@ const Loginuser = () => {
       keystrikeSet("");
     }
 
-    // Settouched2(true);
-    // if (keystroke2.trim().length === 0) {
-    //   setinvalidstate2(true);
-    // }
-    // if (!invalidstate) {
-    //   console.log(keystroke2);
-    //   keystrikeSet2("");
-    // }
+    Settouched2(true);
+    if (keystroke2.trim().length === 0) {
+      setinvalidstate2(true);
+    }
+    if (!invalidstate) {
+      console.log(keystroke2);
+      keystrikeSet2("");
+    }
 
     Settouched3(true);
     if (keystroke3.trim().length === 0) {
@@ -82,15 +82,15 @@ const Loginuser = () => {
   };
 
   const isInvalid = touched && invalidstate;
-  //   const isInvalid2 = touched2 && invalidstate2;
+  const isInvalid2 = touched2 && invalidstate2;
   const isInvalid3 = touched3 && invalidstate3;
 
   return (
     <form className={styles.form} onSubmit={formsubmission}>
       <div className={styles.feildset}>
         <input
-          type="email"
-          placeholder="Email ID"
+          type="text"
+          placeholder="Full Name"
           value={keystroke}
           className={isInvalid ? styles.error : styles.feild}
           onChange={changedevent}
@@ -102,10 +102,10 @@ const Loginuser = () => {
           </p>
         )}
       </div>
-      {/* <div className={styles.feildset}>
+      <div className={styles.feildset}>
         <input
-          type="text"
-          placeholder="PIN Code"
+          type="email"
+          placeholder="Email ID"
           value={keystroke2}
           className={isInvalid2 ? styles.error : styles.feild}
           onChange={changedevent2}
@@ -116,7 +116,7 @@ const Loginuser = () => {
             <BsFillExclamationCircleFill />
           </p>
         )}
-      </div> */}
+      </div>
       <div className={styles.feildset}>
         <input
           type="password"
