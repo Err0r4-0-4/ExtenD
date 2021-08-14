@@ -34,7 +34,7 @@ const app = express();
 // //   databaseURL: "https://test-817a8.firebaseio.com",
 // // });
 
-// app.use(fileuploader());
+app.use(fileuploader());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());

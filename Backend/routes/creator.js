@@ -9,4 +9,6 @@ route.post("/login", creatorController.login);
 route.post("/creatorById", creatorController.getCreatorById);
 route.get("/creators", creatorController.getCreators);
 route.post("/createMerchandise", creatorController.createMerchandise);
+route.post("/uploadContract", creatorController.uploadContract);
+route.post("/getContracts", creatorController.getContracts);
 module.exports = route;
