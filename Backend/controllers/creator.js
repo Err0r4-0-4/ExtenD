@@ -1,5 +1,8 @@
 const Creator = require("../models/creator");
+const Contract = require("../models/contract");
 const jwt = require("jsonwebtoken");
+const ipfsAPI = require("ipfs-api");
+const ipfs = ipfsAPI("ipfs.infura.io", "5001", { protocol: "https" });
 //let admin = require("firebase-admin");
 //let Storage = require("@google-cloud/storage");
 //let config = require("../config.json");
@@ -71,8 +74,44 @@ exports.getCreators = async (req, res, next) => {
 
 exports.getCreatorById = async (req, res, next) => {
   try {
-    let creator = await Creator.findById(req.query.id);
+    let creator = await Creator.findById(req.body.id);
     res.status(200).send({ creator: creator });
+    return;
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
+
+exports.uploadContract = async (req, res, next) => {
+  let file = req.files.file;
+  console.log(file);
+  ipfs.add(file.data, async (err, file) => {
+    console.log(file);
+    if (err) {
+      console.log(err);
+      res.status(400).send({ message: err.message });
+      return;
+    }
+    const contract = new Contract({
+      userId: req.body.userId,
+      title: req.body.title,
+      description: req.body.description,
+      hash: file[0].hash,
+      fileUrl: `https://ipfs.infura.io/ipfs/${file[0].path}`,
+    });
+    try {
+      await contract.save();
+      res.status(200).send({ message: contract.id });
+    } catch (error) {
+      res.status(400).send({ message: error.message });
+    }
+  });
+};
+
+exports.getContracts = async (req, res, next) => {
+  try {
+    let contracts = await Contract.find({ userId: req.body.userId });
+    res.status(200).send({ contracts: contracts });
     return;
   } catch (error) {
     res.status(400).send(error);
