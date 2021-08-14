@@ -73,7 +73,7 @@ const Login = () => {
             </button>
           </div>
         </div>
-        {but ? (
+        {!but ? (
           but2 ? (
             <Loginuser />
           ) : (
