@@ -6,8 +6,8 @@ import { BsDroplet } from "react-icons/bs";
 import { MdCall } from "react-icons/md";
 import Img2 from "../Image/doctors.png";
 import Img1 from "../Image/logo2.png";
-import Loginuser from "../Form/Loginuser";
-import Logincreator from "../Form/Logincreator";
+import Loginuser from "../Login/Loginuser";
+import Logincreator from "../Login/Logincreator";
 import Signupcreator from "../Signup/Signupcreator";
 import Signupuser from "../Signup/Signupuser";
 const Login = () => {

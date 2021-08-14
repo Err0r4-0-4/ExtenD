@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { BsFillExclamationCircleFill } from "react-icons/bs";
-import axios from 'axios'
+import axios from "axios";
 
-import web3 from '../ethereum/web3'
-import factory from '../ethereum/Factory'
+import web3 from "../ethereum/web3";
+import factory from "../ethereum/Factory";
 import styles from "../Pages/Login.module.css";
 
-const Logincreator =() => {
-
+const Logincreator = () => {
   const [keystroke, keystrikeSet] = useState("");
   const [invalidstate, setinvalidstate] = useState(false);
   const [touched, Settouched] = useState(false);
@@ -71,8 +70,23 @@ const Logincreator =() => {
     } else setinvalidstate4(false);
   };
 
+  const [keystroke5, keystrikeSet5] = useState("");
+  const [invalidstate5, setinvalidstate5] = useState(false);
+  const [touched5, Settouched5] = useState(false);
 
-  const formsubmission = async(e) => {
+  const changedevent5 = (e) => {
+    keystrikeSet5(e.target.value);
+    Settouched5(false);
+  };
+
+  const blurevent5 = () => {
+    Settouched5(true);
+    if (keystroke5.trim().length === 0) {
+      setinvalidstate5(true);
+    } else setinvalidstate5(false);
+  };
+
+  const formsubmission = async (e) => {
     e.preventDefault();
     Settouched(true);
     if (keystroke.trim().length === 0) {
@@ -106,22 +120,27 @@ const Logincreator =() => {
       setinvalidstate4(true);
     }
     if (!invalidstate) {
-      console.log(keystroke3);
+      console.log(keystroke4);
       keystrikeSet4("");
     }
 
+    Settouched5(true);
+    if (keystroke5.trim().length === 0) {
+      setinvalidstate5(true);
+    }
+    if (!invalidstate) {
+      console.log(keystroke5);
+      keystrikeSet5("");
+    }
+
     const accounts = await web3.eth.getAccounts();
-    await factory.methods
-    .createCreator(keystroke3)
-    .send({
+    await factory.methods.createCreator(keystroke3).send({
       from: accounts[0],
     });
 
     const count = await factory.methods.creatorCount().call();
 
-    const address = await factory.methods
-    .deployedCreators(count-1)
-    .call();
+    const address = await factory.methods.deployedCreators(count - 1).call();
 
     // console.log(address)
 
@@ -130,11 +149,11 @@ const Logincreator =() => {
       email: keystroke2,
       password: keystroke4,
       account: keystroke3,
-      contractAddress: address
+      contractAddress: address,
     };
 
     axios
-      .post('http://localhost:3000/creator/signup', data)
+      .post("http://localhost:3000/creator/signup", data)
       .then((res) => {
         console.log(res);
         // this.setState({loading: false})
@@ -145,14 +164,13 @@ const Logincreator =() => {
         // this.setState({loading: false})
         // window.location.reload(false);
       });
-   
   };
-
 
   const isInvalid = touched && invalidstate;
   const isInvalid2 = touched2 && invalidstate2;
   const isInvalid3 = touched3 && invalidstate3;
   const isInvalid4 = touched4 && invalidstate4;
+  const isInvalid5 = touched5 && invalidstate5;
 
   return (
     <form className={styles.form} onSubmit={formsubmission}>
@@ -210,7 +228,23 @@ const Logincreator =() => {
           onChange={changedevent4}
           onBlur={blurevent4}
         />
-        {isInvalid3 && (
+        {isInvalid4 && (
+          <p className={styles.error2}>
+            <BsFillExclamationCircleFill />
+          </p>
+        )}
+      </div>
+
+      <div className={styles.feildset}>
+        <input
+          type="text"
+          placeholder="Account"
+          value={keystroke5}
+          className={isInvalid5 ? styles.error : styles.feild}
+          onChange={changedevent5}
+          onBlur={blurevent5}
+        />
+        {isInvalid5 && (
           <p className={styles.error2}>
             <BsFillExclamationCircleFill />
           </p>
@@ -218,7 +252,7 @@ const Logincreator =() => {
       </div>
       <button
         className={
-          isInvalid || isInvalid2 || isInvalid3 || isInvalid4
+          isInvalid || isInvalid2 || isInvalid3 || isInvalid4 || isInvalid5
             ? styles.buttonred
             : styles.button
         }
