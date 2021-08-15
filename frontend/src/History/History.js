@@ -4,8 +4,10 @@ import styles from "./History.module.css";
 import HistoryCard from "../HistoryCard/HistoryCard";
 import EachPage from "../Ui/EachPage";
 import HeaderUser from "../Ui/HeaderUser";
+import Spinner from "../Ui/Spinner";
 const History = React.memo(() => {
   const [transactions, setTransactions] = useState([]);
+  const [showSpinner, setshowSpinner] = useState(false);
 
   useEffect(async () => {
     const data = {
@@ -17,12 +19,13 @@ const History = React.memo(() => {
         token: localStorage.getItem("token"),
       },
     };
-
+    setshowSpinner(true);
     let res = await axios.post(
       "http://localhost:3000/creator/getTransaction",
       data,
       config
     );
+    setshowSpinner(false);
     console.log(res.data.transactions);
     setTransactions(res.data.transactions);
   }, []);
@@ -50,7 +53,9 @@ const History = React.memo(() => {
 
   return (
     <div>
+      {showSpinner ? <Spinner /> : ""}
       <HeaderUser />
+
       <EachPage>
         <div className={styles.banner}>Previous Transactions</div>
         {TransactionArray}

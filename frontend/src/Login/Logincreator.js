@@ -4,13 +4,13 @@ import axios from "axios";
 import web3 from "../ethereum/web3";
 import factory from "../ethereum/Factory";
 import styles from "./Logincreator.module.css";
-
+import Spinner from "../Ui/Spinner";
 const Logincreator = () => {
   //Creator Signup
   const [keystroke, keystrikeSet] = useState("");
   const [invalidstate, setinvalidstate] = useState(false);
   const [touched, Settouched] = useState(false);
-
+  const [showSpinner, setshowSpinner] = useState(false);
   const changedevent = (e) => {
     keystrikeSet(e.target.value);
     Settouched(false);
@@ -151,11 +151,12 @@ const Logincreator = () => {
       account: keystroke3,
       contractAddress: address,
     };
-
+    setshowSpinner(true);
     axios
       .post("http://localhost:3000/creator/signup", data)
       .then((res) => {
         console.log(res);
+        setshowSpinner(false);
         // this.setState({loading: false})
         // window.location.reload(false);
       })

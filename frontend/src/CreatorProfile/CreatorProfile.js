@@ -6,10 +6,11 @@ import image from "../Image/social2.png";
 import EachPage from "../Ui/EachPage";
 import Agreement from "../Agreement/Agreement";
 import Card2 from "../Ui/Card2";
+import Spinner from "../Ui/Spinner";
 const Creators = React.memo(() => {
   const [creator, setCreator] = useState([]);
   const [agreements, setAgreements] = useState([]);
-
+  const [showSpinner, setshowSpinner] = useState(false);
   useEffect(async () => {
     const data = {
       id: localStorage.getItem("id"),
@@ -59,14 +60,16 @@ const Creators = React.memo(() => {
         token: localStorage.getItem("token"),
       },
     };
-
+    setshowSpinner(true);
     axios
       .post("http://localhost:3000/creator/uploadContract", formData, config)
       .then((response) => {
         // this.setState({loading:false})
         console.log(response);
+        setshowSpinner(false);
       })
       .catch((e) => {
+        setshowSpinner(false);
         // this.setState({loading:false})
         console.log(e);
       });
@@ -89,7 +92,7 @@ const Creators = React.memo(() => {
   return (
     <div>
       <HeaderCreater />
-
+      {showSpinner ? <Spinner /> : ""}
       <div className={styles.page}>
         <div className={styles.row2}>
           <Card2>

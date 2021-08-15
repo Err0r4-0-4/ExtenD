@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import axios from 'axios'
+import axios from "axios";
 import styles from "../Pages/Login.module.css";
 import { BsFillExclamationCircleFill } from "react-icons/bs";
-
+import Spinner from "../Ui/Spinner";
 
 const Signupcreator = () => {
   //Creator Login
   const [keystroke, keystrikeSet] = useState("");
   const [invalidstate, setinvalidstate] = useState(false);
   const [touched, Settouched] = useState(false);
-
+  const [showSpinner, setshowSpinner] = useState(false);
   const changedevent = (e) => {
     keystrikeSet(e.target.value);
     Settouched(false);
@@ -85,20 +85,22 @@ const Signupcreator = () => {
 
     const data = {
       email: keystroke,
-      password: keystroke3
+      password: keystroke3,
     };
-
+    setshowSpinner(true);
     axios
       .post("http://localhost:3000/creator/login", data)
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("id", res.data.creatorId);
+        setshowSpinner(false);
         // this.setState({loading: false})
         // window.location.reload(false);
       })
       .then((err) => {
         console.log(err);
+        setshowSpinner(false);
         // this.setState({loading: false})
         // window.location.reload(false);
       });
