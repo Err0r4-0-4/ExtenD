@@ -81,7 +81,24 @@ li .link:visited {
   color: #ffbd00 !important;
   border-bottom: none !important;
 }
-
+.burgerbut {
+  height: 40px;
+  width: 40px;
+  border: 2px solid rgb(175, 175, 175);
+  border-radius: 100px;
+  text-align: center;
+  padding: 6px 8px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+}
+.lines {
+  width: 20px;
+  height: 2.5px;
+  background-color: rgb(206, 206, 206);
+  margin: 4px 0;
+}
 @media only screen and (max-width: 920px) {
   .logo_ {
     flex: 20%;

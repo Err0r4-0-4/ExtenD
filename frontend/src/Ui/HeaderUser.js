@@ -71,7 +71,15 @@ const HeaderUser = () => {
       </li> */}
         </ul>
         <div className={styles.burger} onClick={clickhandler}>
-          {open ? <Modal /> : <p>x</p>}
+          {open ? (
+            <Modal />
+          ) : (
+            <div className={styles.burgerbut}>
+              <div className={styles.lines}></div>
+              <div className={styles.lines}></div>
+              <div className={styles.lines}></div>
+            </div>
+          )}
         </div>
       </div>
     </>

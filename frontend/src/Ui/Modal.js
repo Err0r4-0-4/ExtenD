@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "./Modal.module.css";
 import { NavLink } from "react-router-dom";
+//import { ImCross } from "react-icons/im";
 const Modal = () => {
   return (
     <div className={styles.opened}>
       {console.log("hey")}
       <ul className={styles.ul2}>
-        <li>xx</li>
+        <li className={styles.cross}>X</li>
         <li>
           <NavLink
             to="/home"
