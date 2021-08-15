@@ -13,7 +13,16 @@ import Card from "../Ui/Card";
 const Creators = React.memo((props) => {
   return (
     <Card>
-      <img src={image} className={styles.image}></img>
+      {props.image ? (
+        <img
+          id="base64image"
+          src={`data:image/jpeg;base64,${props.image}`}
+          className={styles.image}
+        />
+      ) : (
+        <img src={image} className={styles.image} />
+      )}
+
       <div className={styles.text}>
         <div className={styles.location}>
           <GrLocation /> India
