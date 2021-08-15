@@ -1,3 +1,109 @@
-.image{
-    height: 100px;
+.image {
+  height: 150px;
+  width: 100%;
+  margin: auto;
+}
+.text {
+  background-color: rgb(245, 245, 245);
+  padding: 20px;
+  text-align: center;
+}
+
+.name {
+  text-transform: capitalize;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.dis {
+  font-size: 14px;
+  letter-spacing: 0px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.text .link {
+  background-color: blue;
+  letter-spacing: 1px;
+  width: 100%;
+  padding: 5px;
+}
+
+.text .link:hover {
+  background-color: rgb(48, 48, 133);
+}
+
+.link a {
+  text-decoration: none;
+  color: white;
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.social li {
+  flex: 20%;
+  margin: 5px;
+  padding: 13px;
+  height: 45px;
+  max-width: 45px;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+}
+.face,
+.insta,
+.mail,
+.snap {
+  font-size: 18px;
+}
+.face {
+  background: linear-gradient(45deg, #3b5998, #0078d7);
+  box-shadow: 0px 4px 30px rgba(43, 98, 169, 0.5);
+}
+.snap {
+  background: linear-gradient(45deg, #cfdd10, rgb(224, 245, 105));
+  box-shadow: 0px 4px 30px rgba(27, 86, 231, 0.7);
+}
+.insta {
+  background: linear-gradient(
+    45deg,
+    #405de6,
+    #5851db,
+    #833ab4,
+    #c13584,
+    #e1306c,
+    #fd1d1d
+  );
+  box-shadow: 0px 4px 30px rgba(120, 64, 190, 0.6);
+}
+
+.twitter {
+  background: linear-gradient(45deg, #1da1f2, #0e71c8);
+  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.7);
+}
+
+.social li a {
+  color: white;
+  text-decoration: none;
+}
+
+.location {
+  text-align: left;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 16px;
+  margin: 5px 0 10px;
+}
+
+.loc {
+  color: #1da1f2;
 }

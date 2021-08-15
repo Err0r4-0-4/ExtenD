@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../Pages/Login.module.css";
-import axios from 'axios'
+import axios from "axios";
 import { BsFillExclamationCircleFill } from "react-icons/bs";
 
 const Loginuser = () => {
@@ -66,7 +66,7 @@ const Loginuser = () => {
 
     const data = {
       email: keystroke,
-      password: keystroke3
+      password: keystroke3,
     };
 
     axios
@@ -110,7 +110,6 @@ const Loginuser = () => {
   };
 
   const isInvalid = touched && invalidstate;
-  //   const isInvalid2 = touched2 && invalidstate2;
   const isInvalid2 = touched2 && invalidstate2;
   const isInvalid3 = touched3 && invalidstate3;
 
@@ -118,8 +117,6 @@ const Loginuser = () => {
     <form className={styles.form} onSubmit={formsubmission}>
       <div className={styles.feildset}>
         <input
-          type="email"
-          placeholder="Email ID"
           type="text"
           placeholder="Full Name"
           value={keystroke}

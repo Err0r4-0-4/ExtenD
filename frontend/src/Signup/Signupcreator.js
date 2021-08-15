@@ -5,6 +5,7 @@ import { BsFillExclamationCircleFill } from "react-icons/bs";
 
 
 const Signupcreator = () => {
+  //Creator Login
   const [keystroke, keystrikeSet] = useState("");
   const [invalidstate, setinvalidstate] = useState(false);
   const [touched, Settouched] = useState(false);
@@ -91,6 +92,8 @@ const Signupcreator = () => {
       .post("http://localhost:3000/creator/login", data)
       .then((res) => {
         console.log(res);
+        console.log(res.data.token)
+        localStorage.setItem("token", res.data.token);
         // this.setState({loading: false})
         // window.location.reload(false);
       })
