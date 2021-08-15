@@ -25,4 +25,12 @@ contract Creator {
       function Creator(address _acc) public {
         acc = _acc;
     }
+    
+    function bal() public view returns (uint){
+        return address(this).balance;
+    }
+
+    function tip() public payable {
+       
+    }
 }

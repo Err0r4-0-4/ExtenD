@@ -72,7 +72,8 @@ const Signupuser = () => {
     axios
       .post("http://localhost:3000/user/login", data)
       .then((res) => {
-        console.log(res);
+        console.log(res.data.token);
+        localStorage.setItem("token", res.data.token);
         // this.setState({loading: false})
         // window.location.reload(false);
       })

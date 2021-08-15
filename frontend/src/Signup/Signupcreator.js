@@ -92,6 +92,8 @@ const Signupcreator = () => {
       .post("http://localhost:3000/creator/login", data)
       .then((res) => {
         console.log(res);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("id", res.data.creatorId);
         // this.setState({loading: false})
         // window.location.reload(false);
       })
