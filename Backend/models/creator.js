@@ -31,6 +31,11 @@ const creatorSchema = new schema({
     type: String,
     require: true,
   },
+  image: {
+    type: String,
+    require: true,
+    default: "",
+  },
 });
 
 module.exports = mongoose.model("Creator", creatorSchema);

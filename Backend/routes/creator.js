@@ -19,4 +19,7 @@ route.post(
   isAuth,
   creatorController.getTransactionsForCreator
 );
+route.post("/createPost", isAuth, creatorController.createPost);
+route.post("/getPosts", isAuth, creatorController.getPostsById);
+route.post("/uploadProfileImage", creatorController.uploadProfileImage);
 module.exports = route;
