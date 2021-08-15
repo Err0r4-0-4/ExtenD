@@ -7,6 +7,7 @@ import CreatorHome from "./Pages/CreatorHome";
 import Full from "./Full/Full";
 import CreatorProfile from './CreatorProfile/CreatorProfile';
 import History from "./History/History";
+import CreateMerch from './createMerch/createMerch'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Login} />
           <Route path="/home" exact component={CreatorHome} />
+          <Route path="/create" exact component={CreateMerch} />
           <Route path="/creators" exact component={Creators} />
           <Route path="/creatorProfile" exact component={CreatorProfile} />
           <Route path="/history" exact component={History} />
