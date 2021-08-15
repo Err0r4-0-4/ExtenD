@@ -3,6 +3,7 @@ const User = require("../models/user");
 const Contract = require("../models/contract");
 const Merchandise = require("../models/merchandise");
 const Transaction = require("../models/transaction");
+const Post = require("../models/post");
 var mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const ipfsAPI = require("ipfs-api");
@@ -53,7 +54,7 @@ exports.login = async (req, res, next) => {
       { email: creator.email, id: creator._id },
       "secret",
       {
-        expiresIn: "1h",
+        expiresIn: "11h",
       }
     );
     return res.status(200).json({
@@ -175,7 +176,7 @@ exports.addTransaction = async (req, res, next) => {
 
 exports.getTransaction = async (req, res, next) => {
   try {
-    console.log(req.user.id)
+    console.log(req.user.id);
     let transactions = await Transaction.find({ userId: req.user.id });
     res.status(200).send({ transactions: transactions });
     return;
@@ -189,6 +190,47 @@ exports.getTransactionsForCreator = async (req, res, next) => {
   try {
     let transactions = await Transaction.find({ creatorId: req.user.id });
     res.status(200).send({ transactions: transactions });
+    return;
+  } catch (error) {
+    res.status(400).send(error.message);
+    return;
+  }
+};
+
+exports.createPost = async (req, res, next) => {
+  try {
+    let post = new Post({
+      creatorId: req.user.id,
+      ...req.body,
+    });
+    await post.save();
+    res.status(400).send({ message: "Post Created Successfully!" });
+    return;
+  } catch (error) {
+    res.status(400).send(error.message);
+    return;
+  }
+};
+
+exports.getPostsById = async (req, res, next) => {
+  try {
+    let posts = await Post.find({ creatorId: req.user.id });
+    res.status(200).send({ posts: posts });
+    return;
+  } catch (error) {
+    res.status(400).send(error.message);
+    return;
+  }
+};
+
+exports.uploadProfileImage = async (req, res, next) => {
+  try {
+    let creator = await Creator.findById("6118b255c11b0b64b8022a16");
+    const file = req.files.file;
+    var base64Image = new Buffer(file.data, "binary").toString("base64");
+    creator.image = base64Image;
+    await creator.save();
+    res.status(200).send({ message: "Image uploaded successfully!" });
     return;
   } catch (error) {
     res.status(400).send(error.message);
