@@ -37,15 +37,6 @@ const Creators = React.memo(() => {
     console.log(eth.data);
     setCreator(eth.data.creator);
 
-     try{
-            const merchandise = await axios.post("http://localhost:3000/creator/getMerchandise", data, config)
-            console.log(merchandise)
-            setMerch(merchandise.data.merchandises)
-         }catch(e){
-             console.log("message")
-             console.log(e.message)
-         }
-
     const cont = await axios.post(
       "http://localhost:3000/creator/getContracts",
       data,

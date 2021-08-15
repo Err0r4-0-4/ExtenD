@@ -6,11 +6,13 @@ import web3 from '../ethereum/web3'
 import styles from './Full.module.css'
 import image from '../Image/doctors.png'
 import Creator from '../ethereum/Creator'
+import Card from '../itemCard/itemCard'
 
 const Full = React.memo(props => {
 
     const [creator, setCreator] = useState({});
     const [amount, setAmount] = useState({});
+    const [merchs, setMerchs] = useState([]);
 
     useEffect( async () => {
 
@@ -24,6 +26,11 @@ const Full = React.memo(props => {
             }
         }
 
+       
+        const meerch = await axios.post("http://localhost:3000/creator/getMerchandise", data, config)
+        console.log(meerch.data.merchandises)
+        setMerchs(meerch.data.merchandises)
+        
         const res = await axios.post("http://localhost:3000/creator/creatorById", data, config)
         setCreator(res.data.creator)
        
@@ -59,6 +66,18 @@ const Full = React.memo(props => {
              console.log(res);
       }
 
+      let items = (
+        <div>
+          {merchs?.map((merch) => (
+           <Card
+           title={merch.title}
+           desc={merch.description}
+           price={merch.price}
+           image={merch.image}/>
+          ))}
+        </div>
+      );
+
 
   return (
       <div>
@@ -81,6 +100,8 @@ const Full = React.memo(props => {
         onChange={event => setAmount(event.target.value)} />
        
        <button onClick={tipHandler}>Tip</button>
+
+       {items}
    </div>
   );
 });
