@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Spinner from "../Ui/Spinner";
 import styles from "./createMerch.module.css";
 const Create = React.memo(() => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [price, setPrice] = useState("");
   const [file, setFile] = useState({});
-
+  const [showSpinner, setshowSpinner] = useState(false);
   const onSubmitHandler = async () => {
     const formData = new FormData();
 
@@ -28,20 +29,24 @@ const Create = React.memo(() => {
 
     try {
       console.log("strated");
+      setshowSpinner(true);
       const res = await axios.post(
         "http://localhost:3000/creator/createMerchandise",
         formData,
         config
       );
+      setshowSpinner(false);
       console.log(res);
     } catch (e) {
       console.log("message");
+      setshowSpinner(false);
       console.log(e.message);
     }
   };
 
   return (
-    <div className={styles.form}>
+    <div>
+      {showSpinner ? <Spinner /> : ""}
       <input
         placeholder="title"
         onChange={(event) => setTitle(event.target.value)}

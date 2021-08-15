@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styles from "../Pages/Login.module.css";
-import axios from 'axios'
+import axios from "axios";
 import { BsFillExclamationCircleFill } from "react-icons/bs";
-
+import Spinner from "../Ui/Spinner";
 const Signupuser = () => {
   //Public Login
   const [keystroke, keystrikeSet] = useState("");
   const [invalidstate, setinvalidstate] = useState(false);
   const [touched, Settouched] = useState(false);
-
+  const [showSpinner, setshowSpinner] = useState(false);
   const changedevent = (e) => {
     keystrikeSet(e.target.value);
     Settouched(false);
@@ -66,14 +66,15 @@ const Signupuser = () => {
 
     const data = {
       email: keystroke,
-      password: keystroke3
+      password: keystroke3,
     };
-
+    setshowSpinner(true);
     axios
       .post("http://localhost:3000/user/login", data)
       .then((res) => {
         console.log(res.data.token);
         localStorage.setItem("token", res.data.token);
+        setshowSpinner(false);
         // this.setState({loading: false})
         // window.location.reload(false);
       })
