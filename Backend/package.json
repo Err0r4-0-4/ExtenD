@@ -16,6 +16,7 @@
     "express-fileupload": "^1.2.1",
     "firebase": "^8.9.1",
     "firebase-admin": "^9.11.0",
+    "ipfs-api": "^26.1.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.7"
   }
