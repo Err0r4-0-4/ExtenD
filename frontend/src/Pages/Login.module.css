@@ -15,7 +15,6 @@
 .header {
   width: 100%;
   height: 100%;
-  overflow: auto;
 }
 
 .header {
@@ -51,6 +50,7 @@
   -ms-border-radius: 100px;
   -o-border-radius: 100px;
   margin: 0 20px;
+  z-index: 1;
 }
 .select2 {
   position: absolute;
@@ -64,6 +64,7 @@
   -ms-border-radius: 100px;
   -o-border-radius: 100px;
   margin: 0 20px;
+  z-index: 1;
 }
 
 .button1 {
@@ -281,4 +282,111 @@
 .footer ul li:hover {
   border-bottom: 1px solid rgb(226, 226, 226);
   margin: 12px 5px;
+}
+
+@media only screen and (max-width: 1040px) {
+  .select,
+  .select2 {
+    bottom: -50px;
+  }
+  .button2,
+  .button1 {
+    width: 80px;
+    padding: 5px;
+  }
+  .profile {
+    padding-left: 0px;
+  }
+  .img2 {
+    padding-top: 50px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .footer ul li a:link,
+  .footer ul li a:visited,
+  .footer ul li a:hover,
+  .footer ul li a:active {
+    font-size: 16px;
+  }
+
+  .form a:visited,
+  .form a:link,
+  .form a:hover,
+  .form a:active {
+    font-size: 14px;
+  }
+
+  .select {
+    left: -100px;
+  }
+  .select2 {
+    right: -100px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .profile {
+    display: none;
+    width: 0;
+    flex: 0;
+  }
+  .img2 {
+    display: none;
+  }
+  .form {
+    border-right: none;
+    overflow: hidden;
+    flex-direction: row;
+  }
+  .logo_name {
+    height: 10vh;
+    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+  }
+  .header {
+    justify-content: start;
+    align-items: initial;
+    height: 85%;
+  }
+  .select,
+  .select2 {
+    bottom: -80px;
+  }
+  .footer p {
+    display: none;
+  }
+
+  .footer ul {
+    margin: auto;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .select,
+  .select2 {
+    bottom: -80px;
+  }
+  .select {
+    left: -150px;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .select2 {
+    right: -50px;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .select2 {
+    right: -70px;
+  }
+  .select {
+    left: -60px;
+  }
+  .logo_name {
+    margin-left: 40px;
+  }
 }
