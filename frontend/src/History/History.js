@@ -1,33 +1,34 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import styles from "./History.module.css";
 import HistoryCard from "../HistoryCard/HistoryCard";
-
+import EachPage from "../Ui/EachPage";
+import HeaderUser from "../Ui/HeaderUser";
 const History = React.memo(() => {
-
-
   const [transactions, setTransactions] = useState([]);
 
-  useEffect( async () => {
-
+  useEffect(async () => {
     const data = {
-       id: localStorage.getItem('id')
-      };
+      id: localStorage.getItem("id"),
+    };
 
-      let config = {
-        headers: {
-            token: localStorage.getItem('token')
-        }
-    }
+    let config = {
+      headers: {
+        token: localStorage.getItem("token"),
+      },
+    };
 
-    let res = await axios.post("http://localhost:3000/creator/getTransaction",data, config);
+    let res = await axios.post(
+      "http://localhost:3000/creator/getTransaction",
+      data,
+      config
+    );
     console.log(res.data.transactions);
     setTransactions(res.data.transactions);
-    
   }, []);
 
   let TransactionArray = (
-    <div>
+    <div className={styles.flex}>
       {transactions.map((transaction) => (
         <HistoryCard
           key={transaction._id}
@@ -47,11 +48,13 @@ const History = React.memo(() => {
     </div>
   );
 
-  
   return (
     <div>
-
-    {TransactionArray}
+      <HeaderUser />
+      <EachPage>
+        <div className={styles.banner}>Previous Transactions</div>
+        {TransactionArray}
+      </EachPage>
     </div>
   );
 });
