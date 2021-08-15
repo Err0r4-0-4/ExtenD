@@ -1,0 +1,49 @@
+.aggrement {
+  border-bottom: 1px solid #12578f;
+  padding-bottom: 20px;
+}
+.title {
+  text-align: center;
+  font: 18px;
+  color: #2b76b3;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  margin: 10px 0;
+}
+.button {
+  min-width: 90%;
+  margin: 10px 5%;
+  background-color: #12578f;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.button:hover {
+  background-color: rgb(27, 79, 122);
+  letter-spacing: 1px;
+}
+.button a {
+  text-decoration: none;
+  color: white;
+}
+
+.dis {
+  margin: 10px 5%;
+
+  font: 16px;
+  color: #1c3244;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+
+.hash {
+  color: rgb(216, 73, 63);
+  font-size: 10px;
+  text-align: center;
+}

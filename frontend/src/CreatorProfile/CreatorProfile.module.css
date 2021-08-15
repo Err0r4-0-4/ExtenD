@@ -31,7 +31,7 @@
   flex: 50%;
   width: 40%;
   min-width: 450px;
-  max-width: 60%;
+  max-width: 30%;
   margin: 20px 0;
   padding: 0 10px;
 }
@@ -69,6 +69,7 @@ input[type="file"]::file-selector-button {
 }
 input[type="file"]::file-selector-button:hover {
   background-color: #084a80;
+  letter-spacing: 1px;
 }
 .feild {
   display: block;
@@ -137,4 +138,5 @@ input[type="file"]::file-selector-button:hover {
 }
 .button:hover {
   background-color: #0c4574;
+  letter-spacing: 1px;
 }
