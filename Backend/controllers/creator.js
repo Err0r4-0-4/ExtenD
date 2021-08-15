@@ -175,6 +175,7 @@ exports.addTransaction = async (req, res, next) => {
 
 exports.getTransaction = async (req, res, next) => {
   try {
+    console.log(req.user.id)
     let transactions = await Transaction.find({ userId: req.user.id });
     res.status(200).send({ transactions: transactions });
     return;

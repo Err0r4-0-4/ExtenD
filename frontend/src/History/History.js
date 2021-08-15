@@ -6,7 +6,7 @@ import HistoryCard from "../HistoryCard/HistoryCard";
 const History = React.memo(() => {
 
 
-  const [agreements, setAggrements] = useState([]);
+  const [transactions, setTransactions] = useState([]);
 
   useEffect( async () => {
 
@@ -20,21 +20,29 @@ const History = React.memo(() => {
         }
     }
 
-    let res = await axios.post("http://localhost:3000/creator/getContracts",data, config);
-    console.log(res.data.contracts);
-    setAggrements(res.data.contracts);
+    let res = await axios.post("http://localhost:3000/creator/getTransaction",data, config);
+    console.log(res.data.transactions);
+    setTransactions(res.data.transactions);
     
   }, []);
 
-  let agreementsArray = (
+  let TransactionArray = (
     <div>
-      {agreements?.map((agreement) => (
-       <HistoryCard 
-       title={agreement.title}
-       desc={agreement.description}
-       url={agreement.fileUrl}
-       hash={agreement.hash}/>
-        
+      {transactions.map((transaction) => (
+        <HistoryCard
+          key={transaction._id}
+          name={transaction.name}
+          amount={transaction.amount}
+          date={transaction.date}
+          address={transaction.address}
+          // id={patient._id}
+          // dose={patient.dose}
+          // name={patient.name}
+          // gender={patient.gender}
+          // special={patient.special}
+          // otp={patient.otp}
+          // vaccinated={patient.vaccinated}
+        />
       ))}
     </div>
   );
@@ -43,7 +51,7 @@ const History = React.memo(() => {
   return (
     <div>
 
-    {agreementsArray}
+    {TransactionArray}
     </div>
   );
 });

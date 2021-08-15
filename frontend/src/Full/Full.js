@@ -42,6 +42,21 @@ const Full = React.memo(props => {
               from: accounts[0],
               value: web3.utils.toWei(amount),
             });
+
+            const data = {
+                name: creator.name,
+                amount: amount,
+                address: creator.contractAddress
+               };
+     
+               let config = {
+                 headers: {
+                     token: localStorage.getItem('token')
+                 }
+             }
+     
+             const res = await axios.post("http://localhost:3000/creator/addTransaction", data, config)
+             console.log(res);
       }
 
 

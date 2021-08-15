@@ -6,10 +6,10 @@ const HistoryCard = React.memo((props) => {
     console.log(props.url)
   return (
    <div>
-       <div>{props.title}</div>
-       <div>{props.desc}</div>
-       <div>{props.url}</div>
-       <div>{props.hash}</div>
+      <div>{props.name}</div>
+      <div>{props.amount}</div>
+      <div>{props.date}</div>
+      <div>{props.address}</div>
    </div>
   );
 });
