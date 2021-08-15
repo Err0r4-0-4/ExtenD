@@ -9,10 +9,12 @@ import Creator from "../ethereum/Creator";
 import Card from "../itemCard/itemCard";
 
 const Full = React.memo((props) => {
+
   const [creator, setCreator] = useState({});
   const [amount, setAmount] = useState({});
   const [merchs, setMerchs] = useState([]);
   const [showSpinner, setshowSpinner] = useState(false);
+  
   useEffect(async () => {
     const data = {
       id: props.match.params.id,
@@ -95,6 +97,7 @@ const Full = React.memo((props) => {
           desc={merch.description}
           price={merch.price}
           image={merch.image}
+          address={creator.contractAddress}
         />
       ))}
     </div>
