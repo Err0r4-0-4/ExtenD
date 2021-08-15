@@ -7,7 +7,15 @@ const transactionSchema = new schema({
     type: String,
     require: true,
   },
-  name: {
+  creatorName: {
+    type: String,
+    require: true,
+  },
+  creatorId: {
+    type: String,
+    require: true,
+  },
+  userName: {
     type: String,
     require: true,
   },

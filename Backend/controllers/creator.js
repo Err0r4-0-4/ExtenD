@@ -183,3 +183,14 @@ exports.getTransaction = async (req, res, next) => {
     return;
   }
 };
+
+exports.getTransactionsForCreator = async (req, res, next) => {
+  try {
+    let transactions = await Transaction.find({ creatorId: req.user.id });
+    res.status(200).send({ transactions: transactions });
+    return;
+  } catch (error) {
+    res.status(400).send(error.message);
+    return;
+  }
+};

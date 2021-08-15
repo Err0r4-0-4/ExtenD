@@ -6,6 +6,7 @@ exports.signup = async (req, res, next) => {
   let password = req.body.password;
   console.log(email.toLowerCase(), password.toLowerCase());
   const user = new User({
+    name: req.body.name,
     email: email.toLowerCase(),
     password: password.toLowerCase(),
   });
@@ -35,5 +36,6 @@ exports.login = async (req, res, next) => {
     message: "User Loggedin Successfully!",
     token: token,
     userId: user._id.toString(),
+    name: user.name,
   });
 };
