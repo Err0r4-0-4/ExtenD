@@ -5,7 +5,7 @@ const schema = mongoose.Schema;
 const orderSchema = new schema({
   userId: {
     type: String,
-    ref: "User",
+    require: true,
   },
   title: {
     type: String,
