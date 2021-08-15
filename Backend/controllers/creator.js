@@ -255,7 +255,9 @@ exports.addOrder = async (req, res, next) => {
 
 exports.getOrders = async (req, res, next) => {
   try {
+    console.log(req.user.id)
     let orders = Order.find({ userId: req.user.id });
+    console.log(orders)
     res.status(200).send({ orders: orders });
     return;
   } catch (error) {
