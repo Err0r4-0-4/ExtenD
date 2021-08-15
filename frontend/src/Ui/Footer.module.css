@@ -6,7 +6,7 @@
 }
 .footer {
   text-align: center;
-  background-color: rgba(19, 19, 26, 0.938);
+  background-color: rgba(15, 15, 20, 0.938);
   color: rgb(233, 233, 233);
   padding: 5px;
   width: 100vw;
@@ -31,8 +31,8 @@
 .fitems li {
   margin: 10px 0;
 }
-.fitemli div {
-  display: inline-block;
+.fitemli li {
+  display: block;
 }
 .fitems li a:link,
 .fitems li a:visited {

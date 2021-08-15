@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import web3 from "../ethereum/web3";
-
-import Creator from '../ethereum/Creator'
+import { Redirect } from "react-router-dom";
+import Creator from "../ethereum/Creator";
 import HeaderCreater from "../Ui/HeaderCreater";
 import styles from "./CreatorProfile.module.css";
 import image from "../Image/social2.png";
-import EachPage from "../Ui/EachPage";
 import Agreement from "../Agreement/Agreement";
 import Card2 from "../Ui/Card2";
 
-
 const Creators = React.memo(() => {
-
   const [merch, setMerch] = useState("");
   const [creator, setCreator] = useState([]);
   const [agreements, setAgreements] = useState([]);
   const [eth, setEth] = useState("");
-
+  const buttonHandle = () => {
+    <Redirect to="/create" />;
+  };
   useEffect(async () => {
     const data = {
       id: localStorage.getItem("id"),
@@ -45,10 +44,10 @@ const Creators = React.memo(() => {
     console.log(cont.data);
     setAgreements(cont.data.contracts);
 
-    const ctr = Creator(eth.data.creator.contractAddress)
+    const ctr = Creator(eth.data.creator.contractAddress);
 
     const b = await ctr.methods.bal().call();
-    setEth(b/1000000000000000000);
+    setEth(b / 1000000000000000000);
   }, []);
 
   const onUploadHandler = (event) => {
@@ -80,20 +79,18 @@ const Creators = React.memo(() => {
       });
   };
 
-  const transferHandler = async() => {
-
+  const transferHandler = async () => {
     const accounts = await web3.eth.getAccounts();
 
-     const ctr = Creator(creator.contractAddress)
+    const ctr = Creator(creator.contractAddress);
 
-     const b = await ctr.methods.bal().call();
+    const b = await ctr.methods.bal().call();
     console.log(b);
 
-     await ctr.methods.transfer(creator.contractAddress).send(
-      { from: accounts[0] }
-     );
-
-  }
+    await ctr.methods
+      .transfer(creator.contractAddress)
+      .send({ from: accounts[0] });
+  };
 
   let agreementArray = (
     <div>
@@ -171,7 +168,11 @@ const Creators = React.memo(() => {
           </div>
 
           <div className={styles.merchand}>
-            <Card2></Card2>
+            <Card2>
+              <button className={styles.button} onClick={buttonHandle}>
+                My Merchandice
+              </button>
+            </Card2>
           </div>
         </div>
         <div className={styles.row3}>
