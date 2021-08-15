@@ -5,6 +5,7 @@ import Creator from "../Creator/Creator";
 import styles from "./Creators.module.css";
 import EachPage from "../Ui/EachPage";
 import Spinner from "../Ui/Spinner";
+import Footer from "../Ui/Footer";
 const Creators = React.memo(() => {
   const [creators, setCreators] = useState([]);
   const [showSpinner, setshowSpinner] = useState(true);
@@ -47,6 +48,7 @@ const Creators = React.memo(() => {
 
         {showSpinner ? <Spinner /> : <div>{creatorsArray}</div>}
       </EachPage>
+      <Footer />
     </div>
   );
 });

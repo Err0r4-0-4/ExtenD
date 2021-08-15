@@ -9,6 +9,7 @@
   justify-content: space-between;
   background-color: transparent;
   position: absolute;
+  z-index: 200;
   top: 0;
 }
 .header2 {
@@ -24,7 +25,7 @@
 .logo {
   margin: 10px 20px 0;
   height: 60px;
-  padding: 0 100px;
+  padding: 0 20px 0 100px;
   float: left;
 }
 
@@ -99,6 +100,15 @@ li .link:visited {
   background-color: #48b9db;
   margin: 4px 0;
 }
+
+.do {
+  font-family: "WindSong", cursive;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 64px;
+  display: block;
+  color: #2594b6;
+}
 @media only screen and (max-width: 920px) {
   .logo_ {
     flex: 20%;
@@ -106,6 +116,9 @@ li .link:visited {
   .logo {
     margin: 10px 0;
     padding: 0 20px 0 60px;
+  }
+  .do {
+    display: none;
   }
 }
 @media only screen and (max-width: 780px) {

@@ -7,7 +7,8 @@ import CreatorHome from "./Pages/CreatorHome";
 import Full from "./Full/Full";
 import CreatorProfile from './CreatorProfile/CreatorProfile';
 import History from "./History/History";
-import CreateMerch from './createMerch/createMerch'
+import CreateMerch from './createMerch/createMerch';
+import Merch from './Merch/Merch'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/creators" exact component={Creators} />
           <Route path="/creatorProfile" exact component={CreatorProfile} />
           <Route path="/history" exact component={History} />
+          <Route path="/merch" exact component={Merch} />
           <Route path="/:id" exact component={Full} />
           {/* <Route path='/creator' exact component={Home}/> */}
         </Switch>
