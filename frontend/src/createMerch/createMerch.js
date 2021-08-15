@@ -13,6 +13,8 @@ const Create = React.memo(() => {
 
         const formData = new FormData();
 
+        console.log(file);
+
         formData.append("file", file);
     
         formData.append("title", title);
@@ -34,8 +36,7 @@ const Create = React.memo(() => {
          }catch(e){
              console.log("message")
              console.log(e.message)
-         }
-         
+         }  
     }
   
   return (
@@ -48,7 +49,7 @@ const Create = React.memo(() => {
      <input placeholder="price"
      onChange={event => setPrice(event.target.value)}/>
      <input type="file"
-     onChange={event => setFile(event.target.value)}/>
+     onChange={event => setFile(event.target.files[0])}/>
 
      <button onClick={onSubmitHandler}>CREATE</button>
     </div>
