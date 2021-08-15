@@ -1,5 +1,7 @@
 const Creator = require("../models/creator");
 const Contract = require("../models/contract");
+const Merchandise = require("../models/merchandise");
+var mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const ipfsAPI = require("ipfs-api");
 const ipfs = ipfsAPI("ipfs.infura.io", "5001", { protocol: "https" });
@@ -118,4 +120,37 @@ exports.getContracts = async (req, res, next) => {
   }
 };
 
-exports.createMerchandise = (req, res, next) => {};
+exports.createMerchandise = async (req, res, next) => {
+  const userId = req.user.id;
+  const title = req.body.title;
+  const description = req.body.description;
+  const price = req.body.price;
+  const file = req.files.file;
+  var base64Image = new Buffer(file.data, "binary").toString("base64");
+  const merchandise = new Merchandise({
+    ...req.body,
+    userId: req.user.id,
+    image: base64Image,
+  });
+  try {
+    await merchandise.save();
+    res.status(200).send({ id: merchandise.id });
+    return;
+  } catch (error) {
+    res.status(400).send(error.message);
+    return;
+  }
+};
+
+exports.getMerchandiseByuserId = async (req, res, next) => {
+  try {
+    let merchandises = await Merchandise.find({
+      userId: mongoose.Types.ObjectId(req.user.id),
+    });
+    res.status(200).send({ merchandises: merchandises });
+    return;
+  } catch (error) {
+    res.status(400).send(error.message);
+    return;
+  }
+};
