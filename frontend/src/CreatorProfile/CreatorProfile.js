@@ -87,6 +87,11 @@ const Creators = React.memo(() => {
        <div>Email</div>
        <div>{creator.email}</div>
 
+       <div>ETh recieved</div>
+       <div>1</div>
+
+       <button>Transfer</button>
+
        <div>Account address</div>
        <div>{creator.contractAddress}</div>
 
