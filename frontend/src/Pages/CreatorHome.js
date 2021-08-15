@@ -3,9 +3,10 @@ import { Route, Switch } from "react-router";
 import Creators from "../Creators/Creators";
 import HeaderUser from "../Ui/HeaderUser";
 import Mainpage from "./Mainpage";
+import styles from "./CreatorHome.module.css";
 const CreatorHome = () => {
   return (
-    <React.Fragment>
+    <div className={styles.App}>
       <HeaderUser />
       <Switch>
         <Route path="/home" component={Mainpage} />
@@ -14,7 +15,7 @@ const CreatorHome = () => {
           <Creators />
         </Route>
       </Switch>
-    </React.Fragment>
+    </div>
   );
 };
 

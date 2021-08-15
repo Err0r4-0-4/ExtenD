@@ -8,7 +8,7 @@ import Full from "./Full/Full";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <div>
         <Switch>
           <Route path="/" exact component={Login} />

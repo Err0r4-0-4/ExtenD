@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import styles from "./Login.module.css";
 import { GoMarkGithub, GoMail } from "react-icons/go";
 import { FaLinkedinIn } from "react-icons/fa";
-import { BsDroplet } from "react-icons/bs";
 import { MdCall } from "react-icons/md";
-import Img2 from "../Image/doctors.png";
+import Img2 from "../Image/creator.png";
+import Img3 from "../Image/user.png";
+
 import Img1 from "../Image/logo_.png";
 import Loginuser from "../Login/Loginuser";
 import Logincreator from "../Login/Logincreator";
@@ -32,17 +33,9 @@ const Login = () => {
         <div className={styles.logo_name}>
           <img src={Img1} alt="logo pimage" className={styles.logo} />
           <div className={styles.box}>
-            <span className={styles.do}>
-              D<BsDroplet className={styles.blood} />
-            </span>
-            <span className={styles.do2}>
-              D<BsDroplet className={styles.blood} />
-              <span className={styles.nate}>NATE</span>
-            </span>
+            <span className={styles.do}>Extend</span>
           </div>
-          <div className={styles.imageprofile}>
-            {/* <img src={Img2} alt="Doctors" className={styles.img2} /> */}
-          </div>
+          <div className={styles.imageprofile}></div>
           <div className={styles.select}>
             <button
               className={!but ? styles.button1 : styles.button2}
@@ -86,12 +79,16 @@ const Login = () => {
         )}
 
         <div className={styles.profile}>
-          <img src={Img2} alt="Doctors" className={styles.img2} />
+          {!but ? (
+            <img src={Img3} alt="User" className={styles.img2} />
+          ) : (
+            <img src={Img2} alt="Creator" className={styles.img2} />
+          )}
         </div>
       </div>
       <div className={styles.footer}>
         <p>
-          Blood Donation Website <span>©</span> Error 404
+          Website for Fintech Creator Economy <span>©</span> Error 404
         </p>
         <ul>
           <li>

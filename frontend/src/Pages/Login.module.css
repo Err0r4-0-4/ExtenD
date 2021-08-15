@@ -91,9 +91,13 @@
 .box {
   font-size: 20px;
 }
-.do,
-.do2 {
+.do {
+  font-family: "WindSong", cursive;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 64px;
   display: block;
+  color: rgb(6, 6, 128);
 }
 .form {
   width: 50%;

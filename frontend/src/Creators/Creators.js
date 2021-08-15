@@ -6,7 +6,7 @@ import styles from "./Creators.module.css";
 import EachPage from "../Ui/EachPage";
 const Creators = React.memo(() => {
   const [creators, setCreators] = useState([]);
-
+  console.log("Log");
   useEffect(async () => {
     axios
       .get("http://localhost:3000/creator/creators")
@@ -34,6 +34,7 @@ const Creators = React.memo(() => {
     <div>
       <HeaderUser />
       <EachPage className={styles.creator}>
+        <div className={styles.banner}>Creators and Curators</div>
         {creators[0]}
         <div>{creatorsArray}</div>
       </EachPage>

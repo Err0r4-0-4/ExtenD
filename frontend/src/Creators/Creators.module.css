@@ -3,3 +3,15 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+.banner {
+  width: 103%;
+  position: relative;
+  left: -1.5%;
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #ffbd00;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+}

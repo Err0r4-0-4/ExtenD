@@ -6,14 +6,14 @@ const Mainpage = () => {
     <div className={styles.mainpage}>
       <div className={styles.head}>
         <h1 className={styles.headtxt}>
-          Extend a Hand of....
+          <span className={styles.yellow}>Extend</span> a Hand of....
           <br />
           Support, Security and Salary
         </h1>
-        <Link to="new" className={styles.but1}>
+        <Link to="/creators" className={styles.but1}>
           Creators
         </Link>
-        <Link to="donate" className={styles.but2}>
+        <Link to="/history" className={styles.but2}>
           History
         </Link>
       </div>

@@ -46,6 +46,7 @@ ul li {
 }
 li .link:link,
 li .link:visited {
+  line-height: 2;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 20px;
@@ -61,15 +62,15 @@ li .link:visited {
 
 li .link:hover,
 li .link:visited {
-  border-bottom: 2px solid rgb(53, 109, 179);
+  border-bottom: 2px solid #fcb900;
 }
 
 .header li .active {
-  color: rgb(53, 109, 179) !important;
+  color: #ffbd00 !important;
   border-bottom: none !important;
 }
 
 .header2 li .active {
-  color: rgb(13, 89, 182) !important;
+  color: #ffbd00 !important;
   border-bottom: none !important;
 }

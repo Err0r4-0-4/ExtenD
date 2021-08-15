@@ -1,5 +1,6 @@
 .page {
   margin: 120px 10px 20px;
-  background-color: white;
+  padding: 1px 10px;
+  background-color: rgb(245, 243, 243);
   box-shadow: 1px 1px 5px rgb(138, 138, 138);
 }
