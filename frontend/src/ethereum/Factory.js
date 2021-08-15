@@ -3,7 +3,7 @@ import Manager from "./build/Factory.json";
 
 const instance = new web3.eth.Contract(
   JSON.parse(Manager.interface),
-  "0x425763425797D6a72b93BDC503E8d6598baEdaE0"
+  "0x6D520e9FD662405D36C22f9E79ce6E9E027a1a05"
 );
 
 export default instance;

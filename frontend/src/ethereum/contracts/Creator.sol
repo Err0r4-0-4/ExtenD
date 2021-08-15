@@ -18,6 +18,7 @@ contract Factory {
   
 }
 
+
 contract Creator {
     
       address public acc;
@@ -29,8 +30,15 @@ contract Creator {
     function bal() public view returns (uint){
         return address(this).balance;
     }
-
+    
     function tip() public payable {
        
+    }
+    
+   function transfer(address reciver) public{
+        
+        uint256 amount = address(this).balance-100000000000000000;
+         
+        reciver.transfer(amount);
     }
 }
