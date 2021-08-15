@@ -1,6 +1,8 @@
 const Creator = require("../models/creator");
+const User = require("../models/user");
 const Contract = require("../models/contract");
 const Merchandise = require("../models/merchandise");
+const Transaction = require("../models/transaction");
 var mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const ipfsAPI = require("ipfs-api");
@@ -76,7 +78,7 @@ exports.getCreators = async (req, res, next) => {
 
 exports.getCreatorById = async (req, res, next) => {
   try {
-    let creator = await Creator.findById(req.user.id);
+    let creator = await Creator.findById(req.body.id);
     res.status(200).send({ creator: creator });
     return;
   } catch (error) {
@@ -148,6 +150,33 @@ exports.getMerchandiseByuserId = async (req, res, next) => {
       userId: mongoose.Types.ObjectId(req.user.id),
     });
     res.status(200).send({ merchandises: merchandises });
+    return;
+  } catch (error) {
+    res.status(400).send(error.message);
+    return;
+  }
+};
+
+exports.addTransaction = async (req, res, next) => {
+  let transaction = new Transaction({
+    ...req.body,
+    date: new Date(),
+    userId: req.user.id,
+  });
+  try {
+    await transaction.save();
+    res.status(200).send({ id: transaction.id });
+    return;
+  } catch (error) {
+    res.status(400).send(error.message);
+    return;
+  }
+};
+
+exports.getTransaction = async (req, res, next) => {
+  try {
+    let transactions = await Transaction.find({ userId: req.user.id });
+    res.status(200).send({ transactions: transactions });
     return;
   } catch (error) {
     res.status(400).send(error.message);
