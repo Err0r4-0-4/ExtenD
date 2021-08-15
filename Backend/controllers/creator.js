@@ -46,7 +46,7 @@ exports.login = async (req, res, next) => {
     }
 
     const token = jwt.sign(
-      { username: creator.email, userId: creator._id },
+      { email: creator.email, id: creator._id },
       "secret",
       {
         expiresIn: "1h",
@@ -74,7 +74,7 @@ exports.getCreators = async (req, res, next) => {
 
 exports.getCreatorById = async (req, res, next) => {
   try {
-    let creator = await Creator.findById(req.body.id);
+    let creator = await Creator.findById(req.user.id);
     res.status(200).send({ creator: creator });
     return;
   } catch (error) {
@@ -93,7 +93,7 @@ exports.uploadContract = async (req, res, next) => {
       return;
     }
     const contract = new Contract({
-      userId: req.body.userId,
+      userId: req.user.id,
       title: req.body.title,
       description: req.body.description,
       hash: file[0].hash,
@@ -110,7 +110,7 @@ exports.uploadContract = async (req, res, next) => {
 
 exports.getContracts = async (req, res, next) => {
   try {
-    let contracts = await Contract.find({ userId: req.body.userId });
+    let contracts = await Contract.find({ userId: req.user.id });
     res.status(200).send({ contracts: contracts });
     return;
   } catch (error) {
