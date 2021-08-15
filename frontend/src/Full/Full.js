@@ -17,18 +17,14 @@ const Full = React.memo(props => {
         const data = {
            id: props.match.params.id
           };
-      
-        //   axios
-        //     .post("http://localhost:3000/creator/creatorById", data)
-        //     .then((res) => {
-        //       console.log(res.data);
-        //       setCreator(res.data.creator);
-        //     })
-        //     .catch((err) => {
-        //       console.log(err);
-        //     });
 
-        const res = await axios.post("http://localhost:3000/creator/creatorById", data)
+          let config = {
+            headers: {
+                token: localStorage.getItem('token')
+            }
+        }
+
+        const res = await axios.post("http://localhost:3000/creator/creatorById", data, config)
         setCreator(res.data.creator)
        
             const ctr = Creator(res.data.creator.contractAddress) 
@@ -47,7 +43,7 @@ const Full = React.memo(props => {
               value: web3.utils.toWei(amount),
             });
       }
-   
+
 
   return (
       <div>
