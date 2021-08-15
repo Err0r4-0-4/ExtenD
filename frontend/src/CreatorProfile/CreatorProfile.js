@@ -71,7 +71,6 @@ const Creators = React.memo(() => {
 
   return (
     <div>
-<<<<<<< HEAD
       <img src={image} className={styles.image}></img>
 
       <div>Name</div>
@@ -89,37 +88,16 @@ const Creators = React.memo(() => {
 
       <div>Email</div>
       <div>{creator.email}</div>
+
       <div>ETh recieved</div>
       <div>1</div>
 
       <button>Transfer</button>
+
       <div>Account address</div>
       <div>{creator.contractAddress}</div>
 
       <input type="file" onChange={onUploadHandler} />
-=======
-
-    <img src={image} className={styles.image}></img>
-
-     <div>Name</div>
-       <div>{creator.name}</div>
-
-       <div>description</div>
-       <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</div>
-
-       <div>Email</div>
-       <div>{creator.email}</div>
-
-       <div>ETh recieved</div>
-       <div>1</div>
-
-       <button>Transfer</button>
-
-       <div>Account address</div>
-       <div>{creator.contractAddress}</div>
-
-       <input type="file" onChange={onUploadHandler}/>
->>>>>>> 9bbf8f0db10a0d5aeea15c15e385d1c65b88c6bf
     </div>
   );
 });

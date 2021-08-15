@@ -7,18 +7,16 @@
   background-position: center;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .head {
   position: absolute;
-  width: 1140px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
+  max-width: 90%;
+  top: 40%;
+  left: 5%;
+
+  margin: 0 40px;
 }
 
 .headtxt {
@@ -83,4 +81,57 @@
   font-weight: 700;
   letter-spacing: 2px;
   font-size: 38px;
+}
+
+@media only screen and (max-width: 780px) {
+  .headtxt {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  .headtxt {
+    font-size: 28px;
+  }
+}
+
+@media only screen and (max-width: 630px) {
+  .headtxt {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .head {
+    top: 35%;
+  }
+  .but1,
+  .but2 {
+    display: block;
+    margin: 40px 0;
+    width: 100%;
+  }
+
+  .but1 {
+    margin-top: 60px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .headtxt {
+    font-size: 22px;
+  }
+  .head {
+    top: 25%;
+  }
+  .but1,
+  .but2 {
+    display: block;
+    margin: 40px 0;
+    width: 100%;
+  }
+
+  .but1 {
+    margin-top: 60px;
+  }
 }
