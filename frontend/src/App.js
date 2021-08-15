@@ -5,7 +5,8 @@ import Login from "./Pages/Login";
 import Creators from "./Creators/Creators";
 import CreatorHome from "./Pages/CreatorHome";
 import Full from "./Full/Full";
-import CreatorProfile from './CreatorProfile/CreatorProfile'
+import CreatorProfile from './CreatorProfile/CreatorProfile';
+import History from "./History/History";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/home" exact component={CreatorHome} />
           <Route path="/creators" exact component={Creators} />
           <Route path="/creatorProfile" exact component={CreatorProfile} />
+          <Route path="/history" exact component={History} />
           <Route path="/:id" exact component={Full} />
           {/* <Route path='/creator' exact component={Home}/> */}
         </Switch>
