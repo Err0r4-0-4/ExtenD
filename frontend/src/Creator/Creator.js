@@ -7,7 +7,7 @@ import {
   GrSnapchat,
   GrLocation,
 } from "react-icons/gr";
-import image from "../Image/social2.png";
+import image from "../Image/creator2.jpg";
 import styles from "./Creator.module.css";
 import Card from "../Ui/Card";
 const Creators = React.memo((props) => {
