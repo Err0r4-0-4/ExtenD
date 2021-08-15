@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../Pages/Login.module.css";
+import axios from 'axios'
 import { BsFillExclamationCircleFill } from "react-icons/bs";
 
 const Signupuser = () => {
@@ -62,6 +63,24 @@ const Signupuser = () => {
       console.log(keystroke);
       keystrikeSet("");
     }
+
+    const data = {
+      email: keystroke,
+      password: keystroke3
+    };
+
+    axios
+      .post("http://localhost:3000/user/login", data)
+      .then((res) => {
+        console.log(res);
+        // this.setState({loading: false})
+        // window.location.reload(false);
+      })
+      .then((err) => {
+        console.log(err);
+        // this.setState({loading: false})
+        // window.location.reload(false);
+      });
 
     // Settouched2(true);
     // if (keystroke2.trim().length === 0) {
