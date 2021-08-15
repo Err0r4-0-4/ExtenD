@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Mainpage.module.css";
+import Footer from "../Ui/Footer";
 const Mainpage = () => {
   return (
     <div className={styles.mainpage}>

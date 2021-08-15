@@ -5,6 +5,7 @@ import HeaderUser from "../Ui/HeaderUser";
 import Mainpage from "./Mainpage";
 import styles from "./CreatorHome.module.css";
 import History from "../History/History";
+import Footer from "../Ui/Footer";
 const CreatorHome = () => {
   return (
     <div className={styles.App}>

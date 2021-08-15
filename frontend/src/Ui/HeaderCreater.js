@@ -15,6 +15,7 @@ const HeaderCreater = () => {
       <div className={header ? styles.header2 : styles.header}>
         <div className={styles.logo_}>
           <img src={Img1} alt="Logo" className={styles.logo}></img>
+          <span className={styles.do}>Extend</span>
         </div>
         {console.log(header)}
 

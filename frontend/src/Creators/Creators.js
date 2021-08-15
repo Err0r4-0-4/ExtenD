@@ -4,6 +4,7 @@ import HeaderUser from "../Ui/HeaderUser";
 import Creator from "../Creator/Creator";
 import styles from "./Creators.module.css";
 import EachPage from "../Ui/EachPage";
+import Footer from "../Ui/Footer";
 const Creators = React.memo(() => {
   const [creators, setCreators] = useState([]);
   console.log("Log");
@@ -43,6 +44,7 @@ const Creators = React.memo(() => {
         {creators[0]}
         <div>{creatorsArray}</div>
       </EachPage>
+      <Footer />
     </div>
   );
 });
