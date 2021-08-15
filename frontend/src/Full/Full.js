@@ -45,6 +45,7 @@ const Full = React.memo((props) => {
 
       const b = await ctr.methods.bal().call();
       console.log(b);
+      setshowSpinner(false);
     } catch (error) {
       setshowSpinner(false);
       console.log(error);
@@ -53,12 +54,17 @@ const Full = React.memo((props) => {
 
   const tipHandler = async () => {
     const ctr = Creator(creator.contractAddress);
-
-    const accounts = await web3.eth.getAccounts();
-    await ctr.methods.tip().send({
-      from: accounts[0],
-      value: web3.utils.toWei(amount),
-    });
+    try {
+      setshowSpinner(true);
+      const accounts = await web3.eth.getAccounts();
+      await ctr.methods.tip().send({
+        from: accounts[0],
+        value: web3.utils.toWei(amount),
+      });
+    } catch (error) {
+      setshowSpinner(false);
+      console.log(error);
+    }
 
     const data = {
       name: creator.name,
@@ -77,6 +83,7 @@ const Full = React.memo((props) => {
       data,
       config
     );
+    setshowSpinner(false);
     console.log(res);
   };
 
