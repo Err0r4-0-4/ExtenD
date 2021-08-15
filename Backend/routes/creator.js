@@ -22,6 +22,6 @@ route.post(
 route.post("/createPost", isAuth, creatorController.createPost);
 route.post("/getPosts", isAuth, creatorController.getPostsById);
 route.post("/uploadProfileImage", creatorController.uploadProfileImage);
-route.post("/addOrder", creatorController.addOrder);
-route.post("/getOrders", creatorController.getOrders);
+route.post("/addOrder", isAuth, creatorController.addOrder);
+route.post("/getOrders", isAuth, creatorController.getOrders);
 module.exports = route;
