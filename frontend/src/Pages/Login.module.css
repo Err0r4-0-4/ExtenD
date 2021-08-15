@@ -43,7 +43,7 @@
   bottom: -30px;
   left: 0;
   padding: 2px 2px;
-  border: 1px solid rgb(6, 6, 128);
+  border: 1px solid #48b9db;
   border-radius: 100px;
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
@@ -57,7 +57,7 @@
   bottom: -30px;
   right: 0;
   padding: 2px 2px;
-  border: 1px solid rgb(6, 6, 128);
+  border: 1px solid #48b9db;
   border-radius: 100px;
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
@@ -70,7 +70,7 @@
 .button1 {
   background-color: white;
   letter-spacing: 1px;
-  color: rgb(6, 6, 128);
+  color: #48b9db;
   padding: 10px;
   border-radius: 100px;
   border: none;
@@ -80,11 +80,12 @@
 .button2 {
   letter-spacing: 1px;
   color: white;
-  background-color: rgb(6, 6, 128);
+  background-color: #3eafd1;
   padding: 10px;
   border-radius: 100px;
   font-size: 16px;
   min-width: 100px;
+  border: 1px solid #42b1d3;
 }
 .blood {
   color: rgb(241, 117, 117);
@@ -98,7 +99,7 @@
   letter-spacing: 2px;
   font-size: 64px;
   display: block;
-  color: rgb(6, 6, 128);
+  color: linear-gradient(#007491, #42b1d3);
 }
 .form {
   width: 50%;
@@ -118,14 +119,14 @@
   margin: 20px auto 44.5px;
   padding: 10px 10px 5px;
   border: none;
-  border-bottom: 2px solid rgb(6, 6, 128);
+  border-bottom: 2px solid #48b9db;
 }
 .form .feild:focus {
   outline: none;
   border: none;
   padding: 10px 10px 4px;
-  border-bottom: 3px solid rgb(6, 6, 128);
-  box-shadow: 0px 1px 0px rgba(92, 92, 168);
+  border-bottom: 3px solid #48b9db;
+  box-shadow: 0px 1px 0px #377d92;
   transition: all ease 0.2s;
 }
 .form .feild:focus::placeholder {
@@ -138,7 +139,7 @@
   width: 80%;
   margin: 60px auto 0;
   padding: 10px;
-  background-color: rgb(6, 6, 128);
+  background-color: #48b9db;
   border: none;
   color: white;
   text-align: center;
@@ -155,11 +156,11 @@
 }
 
 .form .buttonred {
-  background-color: rgb(196, 47, 47);
+  background-color: rgb(211, 81, 81);
 }
 
 .form button:hover {
-  background-color: rgb(37, 37, 190);
+  background-color: #28a1c5;
   letter-spacing: 2px;
 }
 .form .buttonred:hover {
@@ -188,7 +189,7 @@
 .form a:active {
   font-weight: 300;
   letter-spacing: 1px;
-  color: rgb(6, 6, 128);
+  color: #48b9db;
   margin: 0 -2px;
 }
 .form .error {
@@ -241,16 +242,16 @@
   width: 100vw;
   display: flex;
   justify-content: space-between;
-  background-color: rgb(6, 6, 128);
+  background-color: #48b9db;
   height: 11vh;
   min-height: 75px;
 }
 
 .footer p {
   margin: 25px 0 0 40px;
-  color: white;
+  color: rgb(253, 253, 253);
   letter-spacing: 2px;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .footer ul {

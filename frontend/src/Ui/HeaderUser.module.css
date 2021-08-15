@@ -69,16 +69,16 @@ li .link:visited {
 
 li .link:hover,
 li .link:visited {
-  border-bottom: 2px solid #fcb900;
+  border-bottom: 2px solid #48b9db;
 }
 
 .header li .active {
-  color: #ffbd00 !important;
+  color: #6ecbe7 !important;
   border-bottom: none !important;
 }
 
 .header2 li .active {
-  color: #ffbd00 !important;
+  color: #48b9db !important;
   border-bottom: none !important;
 }
 .burgerbut {

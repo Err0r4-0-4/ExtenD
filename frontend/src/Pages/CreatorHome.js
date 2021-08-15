@@ -4,6 +4,7 @@ import Creators from "../Creators/Creators";
 import HeaderUser from "../Ui/HeaderUser";
 import Mainpage from "./Mainpage";
 import styles from "./CreatorHome.module.css";
+import History from "../History/History";
 const CreatorHome = () => {
   return (
     <div className={styles.App}>
@@ -11,7 +12,7 @@ const CreatorHome = () => {
       <Switch>
         <Route path="/home" component={Mainpage} />
         <Route path="/creators" component={Creators} />
-        <Route path="/list">
+        <Route path="/history" exact component={History}>
           <Creators />
         </Route>
       </Switch>

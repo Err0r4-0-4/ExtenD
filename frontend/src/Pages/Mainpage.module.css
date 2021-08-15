@@ -35,7 +35,7 @@
 .but2 {
   display: inline-block;
   padding: 10px 30px;
-  border: 1px solid #ffbd00;
+  border: 1px solid #48b9db;
   border-radius: 100px;
   text-decoration: none;
   letter-spacing: 2px;
@@ -51,7 +51,7 @@
 
 .but1:link,
 .but1:visited {
-  background-color: #ffbd00;
+  background-color: #48b9db;
 
   margin-right: 20px;
   color: white;
@@ -59,26 +59,27 @@
 
 .but1:hover,
 .but1:active {
-  background-color: #f8c22e;
+  background-color: #288aa8;
   color: white;
-  border: 1px solid #fabe1a;
+  border: 1px solid #2f93b1;
 }
 
 .but2:link,
 .but2:visited {
-  color: #ffbd00;
-  border-color: #ffbd00;
+  color: #48b9db;
+  border-color: #48b9db;
 }
 .but2:hover,
 .but2:active {
-  background-color: #f8c22e;
+  background-color: #288aa8;
   color: white;
-  border: 1px solid #fabe1a;
+  border: 1px solid #2f93b1;
 }
 
 .yellow {
-  color: #dbb448;
-  font-weight: 700;
+  color: #8cddf3;
+
+  font-weight: 500;
   letter-spacing: 2px;
   font-size: 38px;
 }
