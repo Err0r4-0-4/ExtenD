@@ -255,7 +255,9 @@ exports.addOrder = async (req, res, next) => {
 
 exports.getOrders = async (req, res, next) => {
   try {
+    //const id = "61180dd1185a1131e477ebe8";
     let orders = Order.find({ userId: req.user.id });
+    console.log(orders);
     res.status(200).send({ orders: orders });
     return;
   } catch (error) {
