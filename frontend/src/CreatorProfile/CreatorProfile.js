@@ -3,9 +3,11 @@ import axios from "axios";
 
 import styles from "./CreatorProfile.module.css";
 import image from "../Image/creator.png";
+import Agreement from '../Agreement/Agreement'
 
 const Creators = React.memo(() => {
   const [creator, setCreator] = useState([]);
+  const [agreements, setAgreements] = useState([]);
 
   useEffect(async () => {
     const data = {
@@ -31,8 +33,9 @@ const Creators = React.memo(() => {
       data,
       config
     );
-    console.log(res);
-    console.log("res");
+    console.log(res.data);
+    setAgreements(res.data.contracts);
+
 
     // const ctr = Creator(res.data.creator.contractAddress)
 
@@ -69,6 +72,21 @@ const Creators = React.memo(() => {
       });
   };
 
+  let agreementArray = (
+    <div>
+      {agreements.map((agreement) => (
+        <Agreement
+          key={agreement._id}
+          title={agreement.title}
+          desc={agreement.description}
+          url={agreement.fileUrl}
+          hash={agreement.hash}
+        />
+      ))}
+    </div>
+  );
+
+
   return (
     <div>
       <img src={image} className={styles.image}></img>
@@ -97,7 +115,12 @@ const Creators = React.memo(() => {
       <div>Account address</div>
       <div>{creator.contractAddress}</div>
 
+      <input type="text" placeholder="title"></input>
+      <input type="text" placeholder="description"></input>
       <input type="file" onChange={onUploadHandler} />
+
+      //////////////
+      {agreementArray}
     </div>
   );
 });
