@@ -117,10 +117,11 @@ const Creators = React.memo(() => {
         <div className={styles.row2}>
           <Card2>
             <img src={image} className={styles.image}></img>
-            <div>Name</div>
-            <div>{creator.name}</div>
-            <div>description</div>
-            <div>
+            <div className={styles.left}>Name</div>
+            <div className={styles.right}>{creator.name}</div>
+            <br />
+            <div className={styles.left}>Description</div>
+            <div className={styles.right}>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
@@ -128,25 +129,39 @@ const Creators = React.memo(() => {
               survived not only five centuries, but also the leap into
               electronic typesetting, remaining essentially unchanged.
             </div>
+            <br />
 
-            <div>Email</div>
-            <div>{creator.email}</div>
+            <div className={styles.left}>Email</div>
+            <div className={styles.right}>{creator.email}</div>
+            <br />
           </Card2>
         </div>
         <div className={styles.row1}>
           <div className={styles.eth}>
             <Card2>
-              <div>Account address</div>
-              <div>{creator.contractAddress}</div>
-              <div>Eth recieved</div>
-              <div>{eth}</div>
-              <button className={styles.button} onClick={transferHandler}>Transfer</button>
+              <div>
+                <div className={styles.left}>Account</div>
+
+                <div className={styles.right}>{creator.contractAddress}</div>
+              </div>
+              <span className={styles.left}>ETH recieved</span>
+              <span className={styles.right}>1 ETH</span>
+
+              <button className={styles.button}>Transfer</button>
             </Card2>
           </div>
           <div className={styles.Files}>
             <Card2>
-              <input type="text" placeholder="title"></input>
-              <input type="text" placeholder="description"></input>
+              <input
+                type="text"
+                placeholder="Title"
+                className={styles.feild}
+              ></input>
+              <input
+                type="text"
+                placeholder="Description"
+                className={styles.feild}
+              ></input>
               <input
                 type="file"
                 onChange={onUploadHandler}
@@ -161,7 +176,7 @@ const Creators = React.memo(() => {
         </div>
         <div className={styles.row3}>
           <Card2>
-            <div>A</div>
+            <div>{agreementArray}</div>
           </Card2>
         </div>
       </div>
