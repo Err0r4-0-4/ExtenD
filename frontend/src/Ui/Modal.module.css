@@ -10,7 +10,10 @@
   background-color: black;
   z-index: 100;
 }
-
+.cross {
+  font-size: 20px;
+  font-weight: 800;
+}
 .ul2 {
   padding: 10px 0;
   margin-top: 10px;

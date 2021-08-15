@@ -12,6 +12,11 @@ route.post("/createMerchandise", isAuth, creatorController.createMerchandise);
 route.post("/getMerchandise", isAuth, creatorController.getMerchandiseByuserId);
 route.post("/uploadContract", isAuth, creatorController.uploadContract);
 route.post("/getContracts", isAuth, creatorController.getContracts);
-route.post("/addTransaction", isAuth, creatorController.addTransaction);
+route.post("/addTransaction", creatorController.addTransaction);
 route.post("/getTransaction", isAuth, creatorController.getTransaction);
+route.post(
+  "/getTransactionsForCreator",
+  isAuth,
+  creatorController.getTransactionsForCreator
+);
 module.exports = route;
