@@ -1,0 +1,6 @@
+.card {
+  margin: 20px;
+  border: 1px solid rgb(187, 187, 187);
+  max-width: 200px;
+  min-width: 270px;
+}

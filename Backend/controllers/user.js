@@ -28,14 +28,12 @@ exports.login = async (req, res, next) => {
     return res.status(400).json({ message: "User not found" });
   }
 
-  const token = jwt.sign({ username: user.email, userId: user._id }, "secret", {
+  const token = jwt.sign({ email: user.email, id: user._id }, "secret", {
     expiresIn: "1h",
   });
-  return res
-    .status(200)
-    .json({
-      message: "User Loggedin Successfully!",
-      token: token,
-      userId: user._id.toString(),
-    });
+  return res.status(200).json({
+    message: "User Loggedin Successfully!",
+    token: token,
+    userId: user._id.toString(),
+  });
 };

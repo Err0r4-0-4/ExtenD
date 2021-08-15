@@ -1,0 +1,75 @@
+* {
+  font-family: "Montserrat", "Arial", sans-serif;
+}
+.header,
+.header2 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+}
+.header2 {
+  background-color: white;
+  color: black;
+  box-shadow: 0 2px 0 rgb(224, 224, 224);
+  top: 0;
+  margin-top: 0;
+}
+.logo_ {
+  flex: 30%;
+}
+.logo {
+  margin: 10px 20px 0;
+  height: 60px;
+  padding: 0 100px;
+  float: left;
+}
+.ul {
+  margin-top: 10px;
+  list-style-type: none;
+}
+
+ul li {
+  display: inline-block;
+  color: white;
+  padding: 15px;
+  margin: 10px;
+}
+.header .link {
+  color: white;
+}
+.header2 .link {
+  color: black;
+}
+li .link:link,
+li .link:visited {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  border-bottom: 0 solid transparent;
+  transition: border-bottom 0.5s;
+  -webkit-transition: border-bottom 0.5s;
+  -moz-transition: border-bottom 0.5s;
+  -ms-transition: border-bottom 0.5s;
+  -o-transition: border-bottom 0.5s;
+}
+
+li .link:hover,
+li .link:visited {
+  border-bottom: 2px solid rgb(53, 109, 179);
+}
+
+.header li .active {
+  color: rgb(53, 109, 179) !important;
+  border-bottom: none !important;
+}
+
+.header2 li .active {
+  color: rgb(13, 89, 182) !important;
+  border-bottom: none !important;
+}
