@@ -25,7 +25,12 @@ const Creators = React.memo(() => {
   let creatorsArray = (
     <div className={styles.flex}>
       {creators.creators?.map((creator) => (
-        <Creator key={creator._id} id={creator._id} name={creator.name} />
+        <Creator
+          key={creator._id}
+          id={creator._id}
+          name={creator.name}
+          image={creator.image}
+        />
       ))}
     </div>
   );
