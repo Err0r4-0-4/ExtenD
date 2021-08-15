@@ -3,6 +3,7 @@ const User = require("../models/user");
 const Contract = require("../models/contract");
 const Merchandise = require("../models/merchandise");
 const Transaction = require("../models/transaction");
+const Order = require("../models/order");
 const Post = require("../models/post");
 var mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
@@ -148,7 +149,7 @@ exports.createMerchandise = async (req, res, next) => {
 exports.getMerchandiseByuserId = async (req, res, next) => {
   try {
     let merchandises = await Merchandise.find({
-      userId: mongoose.Types.ObjectId(req.user.id),
+      userId: req.body.id,
     });
     res.status(200).send({ merchandises: merchandises });
     return;
@@ -231,6 +232,31 @@ exports.uploadProfileImage = async (req, res, next) => {
     creator.image = base64Image;
     await creator.save();
     res.status(200).send({ message: "Image uploaded successfully!" });
+    return;
+  } catch (error) {
+    res.status(400).send(error.message);
+    return;
+  }
+};
+
+exports.addOrder = async (req, res, next) => {
+  let order = new Order({
+    ...req.body,
+    userId: req.user.id,
+  });
+  try {
+    await order.save();
+    res.status(200).send({ message: "order added" });
+  } catch (error) {
+    res.status(400).send(error.message);
+    return;
+  }
+};
+
+exports.getOrders = async (req, res, next) => {
+  try {
+    let orders = Order.find({ userId: req.user.id });
+    res.status(200).send({ orders: orders });
     return;
   } catch (error) {
     res.status(400).send(error.message);
