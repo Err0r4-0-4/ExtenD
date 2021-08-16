@@ -19,6 +19,7 @@ const Creators = React.memo(() => {
   const [eth, setEth] = useState("");
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [hash, setHash] = useState("");
 
 
   const buttonHandle = () => {
@@ -82,7 +83,7 @@ const Creators = React.memo(() => {
       .post("http://localhost:3000/creator/uploadContract", formData, config)
       .then((response) => {
         console.log(response);
-        
+        setHash(response.data.contract.hash)
         setshowSpinner(false);
       })
       .catch((e) => {
@@ -94,11 +95,10 @@ const Creators = React.memo(() => {
       setshowSpinner(true);
 
       try{
+        console.log(hash)
         const ctr = Creator(creator.contractAddress);
-        await ctr.methods.addHash(event.target.files[0]).send({ from: accounts[0] });
-        setshowSpinner(false);
+        await ctr.methods.addHash(hash).send({ from: accounts[0] });
       }catch(e){
-        setshowSpinner(false);
         console.log(e);
       }
   };
