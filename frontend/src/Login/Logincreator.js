@@ -5,7 +5,7 @@ import web3 from "../ethereum/web3";
 import factory from "../ethereum/Factory";
 import styles from "./Logincreator.module.css";
 import Spinner from "../Ui/Spinner";
-import {Redirect} from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 
 const Logincreator = () => {
   //Creator Signup
@@ -14,7 +14,7 @@ const Logincreator = () => {
   const [touched, Settouched] = useState(false);
   const [showSpinner, setshowSpinner] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
-
+  const [file, setFile] = useState({});
   const changedevent = (e) => {
     keystrikeSet(e.target.value);
     Settouched(false);
@@ -148,22 +148,30 @@ const Logincreator = () => {
 
     // console.log(address)
 
-    const data = {
-      name: keystroke,
-      email: keystroke2,
-      password: keystroke4,
-      account: keystroke3,
-      contractAddress: address,
-    };
+    // const data = {
+    //   name: keystroke,
+    //   email: keystroke2,
+    //   password: keystroke4,
+    //   account: keystroke3,
+    //   contractAddress: address,
+    // };
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("name", keystroke);
+    formData.append("email", keystroke2);
+    formData.append("password", keystroke4);
+    formData.append("account", keystroke3);
+    formData.append("contractAddress", address);
     setshowSpinner(true);
     axios
-      .post("http://localhost:3000/creator/signup", data)
+      .post("http://localhost:3000/creator/signup", formData)
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("id", res.data.creatorId);
         localStorage.setItem("creator", true);
-        setIsAuth(true)
+        setIsAuth(true);
         setshowSpinner(false);
         // this.setState({loading: false})
         // window.location.reload(false);
@@ -183,7 +191,7 @@ const Logincreator = () => {
 
   return (
     <form className={styles.form} onSubmit={formsubmission}>
-      {isAuth ? <Redirect to="creatorProfile"/> : null}
+      {isAuth ? <Redirect to="creatorProfile" /> : null}
       <div className={styles.feildset}>
         <input
           type="text"
@@ -272,6 +280,7 @@ const Logincreator = () => {
         <a href="#">Error Encountered</a>
         <a href="#">Forgot Password ?</a>
       </div>
+      <input type="file" onChange={(event) => setFile(event.target.files[0])} />
     </form>
   );
 };

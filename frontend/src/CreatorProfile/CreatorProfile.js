@@ -5,22 +5,21 @@ import { Redirect } from "react-router-dom";
 import Creator from "../ethereum/Creator";
 import HeaderCreater from "../Ui/HeaderCreater";
 import styles from "./CreatorProfile.module.css";
-import image from "../Image/social2.png";
+import image1 from "../Image/social2.png";
 import Agreement from "../Agreement/Agreement";
 import Card2 from "../Ui/Card2";
 import Spinner from "../Ui/Spinner";
 
 const Creators = React.memo(() => {
-
   const [merch, setMerch] = useState("");
   const [creator, setCreator] = useState([]);
   const [agreements, setAgreements] = useState([]);
   const [showSpinner, setshowSpinner] = useState(false);
   const [eth, setEth] = useState("");
+  const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [hash, setHash] = useState("");
-
 
   const buttonHandle = () => {
     <Redirect to="/create" />;
@@ -42,7 +41,8 @@ const Creators = React.memo(() => {
       data,
       config
     );
-    console.log(eth.data);
+    console.log("eth.data", eth.data);
+    setImage(eth.data.creator.image);
     setCreator(eth.data.creator);
 
     const cont = await axios.post(
@@ -57,12 +57,9 @@ const Creators = React.memo(() => {
 
     const b = await ctr.methods.bal().call();
     setEth(b / 1000000000000000000);
-
-
   }, []);
 
-  const onUploadHandler = async(event) => {
-
+  const onUploadHandler = async (event) => {
     const accounts = await web3.eth.getAccounts();
 
     const formData = new FormData();
@@ -83,7 +80,7 @@ const Creators = React.memo(() => {
       .post("http://localhost:3000/creator/uploadContract", formData, config)
       .then((response) => {
         console.log(response);
-        setHash(response.data.contract.hash)
+        setHash(response.data.contract.hash);
         setshowSpinner(false);
       })
       .catch((e) => {
@@ -92,18 +89,16 @@ const Creators = React.memo(() => {
         console.log(e);
       });
 
-      setshowSpinner(true);
+    setshowSpinner(true);
 
-      try{
-        console.log(hash)
-        const ctr = Creator(creator.contractAddress);
-        await ctr.methods.addHash(hash).send({ from: accounts[0] });
-      }catch(e){
-        console.log(e);
-      }
+    try {
+      console.log(hash);
+      const ctr = Creator(creator.contractAddress);
+      await ctr.methods.addHash(hash).send({ from: accounts[0] });
+    } catch (e) {
+      console.log(e);
+    }
   };
-
-
 
   const transferHandler = async () => {
     const accounts = await web3.eth.getAccounts();
@@ -117,7 +112,7 @@ const Creators = React.memo(() => {
       .transfer(creator.contractAddress)
       .send({ from: accounts[0] });
   };
-
+  const onUpload = async () => {};
   let agreementArray = (
     <div>
       {agreements.map((agreement) => (
@@ -139,7 +134,15 @@ const Creators = React.memo(() => {
       <div className={styles.page}>
         <div className={styles.row2}>
           <Card2>
-            <img src={image} className={styles.image}></img>
+            {image.length ? (
+              <img
+                id="base64image"
+                src={`data:image/jpeg;base64,${image}`}
+                className={styles.image}
+              />
+            ) : (
+              <img src={image1} className={styles.image}></img>
+            )}
             <div className={styles.left}>Name</div>
             <div className={styles.right}>{creator.name}</div>
             <br />
@@ -170,7 +173,9 @@ const Creators = React.memo(() => {
               <span className={styles.left}>ETH recieved</span>
               <span className={styles.right}>{eth}</span>
 
-              <button className={styles.button} onClick={transferHandler}>Transfer</button>
+              <button className={styles.button} onClick={transferHandler}>
+                Transfer
+              </button>
             </Card2>
           </div>
           <div className={styles.Files}>
@@ -179,13 +184,13 @@ const Creators = React.memo(() => {
                 type="text"
                 placeholder="Title"
                 className={styles.feild}
-                onChange={event => setTitle(event.target.value)}
+                onChange={(event) => setTitle(event.target.value)}
               ></input>
               <input
                 type="text"
                 placeholder="Description"
                 className={styles.feild}
-                onChange={event => setDesc(event.target.value)}
+                onChange={(event) => setDesc(event.target.value)}
               ></input>
               <input
                 type="file"
