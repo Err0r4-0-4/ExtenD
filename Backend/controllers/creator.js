@@ -151,6 +151,7 @@ exports.getMerchandiseByuserId = async (req, res, next) => {
     let merchandises = await Merchandise.find({
       userId: req.body.id,
     });
+    console.log(req.body.id);
     res.status(200).send({ merchandises: merchandises });
     return;
   } catch (error) {
