@@ -3,7 +3,7 @@ import axios from "axios";
 import styles from "../Pages/Login.module.css";
 import { BsFillExclamationCircleFill } from "react-icons/bs";
 import Spinner from "../Ui/Spinner";
-import {Redirect} from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 
 const Signupcreator = () => {
   //Creator Login
@@ -12,7 +12,7 @@ const Signupcreator = () => {
   const [touched, Settouched] = useState(false);
   const [showSpinner, setshowSpinner] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
-
+  const [err, setErr] = useState(false);
   const changedevent = (e) => {
     keystrikeSet(e.target.value);
     Settouched(false);
@@ -64,7 +64,6 @@ const Signupcreator = () => {
       setinvalidstate(true);
     }
     if (!invalidstate) {
-      console.log(keystroke);
       keystrikeSet("");
     }
 
@@ -82,7 +81,6 @@ const Signupcreator = () => {
       setinvalidstate3(true);
     }
     if (!invalidstate) {
-      console.log(keystroke3);
       keystrikeSet3("");
     }
 
@@ -94,18 +92,18 @@ const Signupcreator = () => {
     axios
       .post("http://localhost:3000/creator/login", data)
       .then((res) => {
-        console.log(res);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("id", res.data.creatorId);
         localStorage.setItem("creator", true);
-        setIsAuth(true)
+        setIsAuth(true);
         setshowSpinner(false);
         // this.setState({loading: false})
         // window.location.reload(false);
       })
-      .then((err) => {
+      .catch((err) => {
         console.log(err);
         setshowSpinner(false);
+        window.alert(err);
         // this.setState({loading: false})
         // window.location.reload(false);
       });
@@ -116,9 +114,8 @@ const Signupcreator = () => {
   const isInvalid3 = touched3 && invalidstate3;
 
   return (
-
     <form className={styles.form} onSubmit={formsubmission}>
-      {isAuth ? <Redirect to="creatorProfile"/> : null}
+      {isAuth ? <Redirect to="creatorProfile" /> : null}
       <div className={styles.feildset}>
         <input
           type="email"
