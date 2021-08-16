@@ -176,7 +176,8 @@ const Logincreator = () => {
         // this.setState({loading: false})
         // window.location.reload(false);
       })
-      .then((err) => {
+      .catch((err) => {
+        window.alert(err);
         console.log(err);
         // this.setState({loading: false})
         // window.location.reload(false);
@@ -231,6 +232,7 @@ const Logincreator = () => {
           onChange={changedevent3}
           onBlur={blurevent3}
         />
+
         {isInvalid3 && (
           <p className={styles.error2}>
             <BsFillExclamationCircleFill />
@@ -267,6 +269,11 @@ const Logincreator = () => {
           </p>
         )}
       </div>
+      <input
+        type="file"
+        onChange={(event) => setFile(event.target.files[0])}
+        className={styles.choose}
+      />
       <button
         className={
           isInvalid || isInvalid2 || isInvalid3 || isInvalid4 || isInvalid5
@@ -276,11 +283,6 @@ const Logincreator = () => {
       >
         LOGIN
       </button>
-      <div className={styles.anchor}>
-        <a href="#">Error Encountered</a>
-        <a href="#">Forgot Password ?</a>
-      </div>
-      <input type="file" onChange={(event) => setFile(event.target.files[0])} />
     </form>
   );
 };
