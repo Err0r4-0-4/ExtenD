@@ -1,4 +1,5 @@
 import "./App.css";
+import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import Login from "./Pages/Login";
@@ -12,6 +13,11 @@ import Merch from './Merch/Merch';
 import Orders from './Orders/Orders'
 
 function App() {
+
+  useEffect(() => {
+    document.title = "Extend"
+  }, [])
+
   return (
     <div className="App">
       <div>
