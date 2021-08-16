@@ -136,15 +136,20 @@ const Logincreator = () => {
       console.log(keystroke5);
       keystrikeSet5("");
     }
+    let address;
+    try {
+      setshowSpinner(true);
+      const accounts = await web3.eth.getAccounts();
+      await factory.methods.createCreator(keystroke3).send({
+        from: accounts[0],
+      });
 
-    const accounts = await web3.eth.getAccounts();
-    await factory.methods.createCreator(keystroke3).send({
-      from: accounts[0],
-    });
+      const count = await factory.methods.creatorCount().call();
 
-    const count = await factory.methods.creatorCount().call();
-
-    const address = await factory.methods.deployedCreators(count - 1).call();
+      address = await factory.methods.deployedCreators(count - 1).call();
+    } catch (error) {
+      setshowSpinner(false);
+    }
 
     // console.log(address)
 
@@ -163,7 +168,7 @@ const Logincreator = () => {
     formData.append("password", keystroke4);
     formData.append("account", keystroke3);
     formData.append("contractAddress", address);
-    setshowSpinner(true);
+
     axios
       .post("http://localhost:3000/creator/signup", formData)
       .then((res) => {
@@ -176,7 +181,8 @@ const Logincreator = () => {
         // this.setState({loading: false})
         // window.location.reload(false);
       })
-      .then((err) => {
+      .catch((err) => {
+        setshowSpinner(false);
         console.log(err);
         // this.setState({loading: false})
         // window.location.reload(false);
@@ -192,6 +198,7 @@ const Logincreator = () => {
   return (
     <form className={styles.form} onSubmit={formsubmission}>
       {isAuth ? <Redirect to="creatorProfile" /> : null}
+      {showSpinner ? <Spinner /> : ""}
       <div className={styles.feildset}>
         <input
           type="text"
