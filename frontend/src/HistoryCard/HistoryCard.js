@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Card from "../Ui/Card";
 import styles from "./HistoryCard.module.css";
 import image from "../Image/social2.png";
-import Slide from "react-reveal/Slide";
+//import Slide from "react-reveal/Slide";
 const HistoryCard = React.memo((props) => {
   const months = [
     "Jan",
@@ -27,7 +27,7 @@ const HistoryCard = React.memo((props) => {
   console.log(year, date, month);
   console.log(props.url);
   return (
-    <Slide up>
+ 
       <Card>
         <div className={styles.card}>
           <img src={image} className={styles.image}></img>
@@ -45,7 +45,7 @@ const HistoryCard = React.memo((props) => {
           </div>
         </div>
       </Card>
-    </Slide>
+
   );
 });
 
