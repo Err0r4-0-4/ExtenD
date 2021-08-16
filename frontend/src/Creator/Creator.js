@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Flip from "react-reveal/Flip";
+import Slide from "react-reveal/Slide";
 import {
   GrFacebookOption,
   GrInstagram,
@@ -13,7 +13,7 @@ import styles from "./Creator.module.css";
 import Card from "../Ui/Card";
 const Creators = React.memo((props) => {
   return (
-    <Flip left>
+    <Slide up>
       <Card>
         {props.image ? (
           <img
@@ -61,7 +61,7 @@ const Creators = React.memo((props) => {
           </div>
         </div>
       </Card>
-    </Flip>
+    </Slide>
   );
 });
 
