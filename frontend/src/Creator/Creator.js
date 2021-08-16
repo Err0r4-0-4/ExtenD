@@ -35,23 +35,23 @@ const Creators = React.memo((props) => {
 
         <ul className={styles.social}>
           <li className={styles.face}>
-            <a href="#">
+            <a href="https://facebook.com/creator">
               <GrFacebookOption />
             </a>
           </li>
           <li className={styles.insta}>
-            <a href="#">
+            <a href="https://instagram.com/creator">
               <GrInstagram />
             </a>
           </li>
 
           <li className={styles.twitter}>
-            <a href="#">
+            <a href="https://twitter.com/creator">
               <GrTwitter />
             </a>
           </li>
           <li className={styles.snap}>
-            <a href="#">
+            <a href="https://snapchat.com/creator">
               <GrSnapchat />
             </a>
           </li>
