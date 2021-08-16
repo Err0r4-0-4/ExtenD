@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+//import Slide from "react-reveal/Slide";
 import {
   GrFacebookOption,
   GrInstagram,
@@ -60,7 +61,10 @@ const Creators = React.memo((props) => {
         </div>
       </div>
     </Card>
+<<<<<<< HEAD
     // </Slide>
+=======
+>>>>>>> f734e2f0d82c340dc32fa3594d57341c5838de4f
   );
 });
 

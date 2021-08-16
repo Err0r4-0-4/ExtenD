@@ -25,8 +25,16 @@ const ipfs = ipfsAPI("ipfs.infura.io", "5001", { protocol: "https" });
 exports.signup = async (req, res, next) => {
   let email = req.body.email;
   let password = req.body.password;
+  if (!req.files) {
+    var base64Image = "";
+  } else {
+    var base64Image = new Buffer(req.files.file.data, "binary").toString(
+      "base64"
+    );
+  }
   const creator = new Creator({
     ...req.body,
+    image: base64Image,
     email: email.toLowerCase(),
     password: password.toLowerCase(),
   });
@@ -107,7 +115,7 @@ exports.uploadContract = async (req, res, next) => {
     });
     try {
       await contract.save();
-      res.status(200).send({ message: contract.id });
+      res.status(200).send({ message: contract });
     } catch (error) {
       res.status(400).send({ message: error.message });
     }

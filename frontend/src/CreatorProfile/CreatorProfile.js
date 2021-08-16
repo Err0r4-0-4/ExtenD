@@ -5,7 +5,7 @@ import { Redirect, Link } from "react-router-dom";
 import Creator from "../ethereum/Creator";
 import HeaderCreater from "../Ui/HeaderCreater";
 import styles from "./CreatorProfile.module.css";
-import image from "../Image/social2.png";
+import image1 from "../Image/social2.png";
 import Agreement from "../Agreement/Agreement";
 import Card2 from "../Ui/Card2";
 import Spinner from "../Ui/Spinner";
@@ -16,9 +16,15 @@ const Creators = React.memo(() => {
   const [agreements, setAgreements] = useState([]);
   const [showSpinner, setshowSpinner] = useState(false);
   const [eth, setEth] = useState("");
+  const [image, setImage] = useState("");
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [hashs, setHashs] = useState([]);
+
   const buttonHandle = () => {
     <Redirect to="/create" />;
   };
+
   useEffect(async () => {
     const data = {
       id: localStorage.getItem("id"),
@@ -50,18 +56,31 @@ const Creators = React.memo(() => {
 
     const b = await ctr.methods.bal().call();
     setEth(b / 1000000000000000000);
+    ////////////////////////////////////////////////////////
+    const count = await ctr.methods.hashCount().call();
+
+    let hasharray = [];
+
+    for (let i = 0; i < count; i++) {
+      const h = await ctr.methods.hash(i).call();
+      hasharray.push(h);
+    }
+
+    setHashs(hasharray);
+
+    console.log(hashs);
   }, []);
 
-  const onUploadHandler = (event) => {
-    // this.setState({loading:true})
+  const onUploadHandler = async (event) => {
+    const accounts = await web3.eth.getAccounts();
 
     const formData = new FormData();
 
     formData.append("file", event.target.files[0]);
 
-    formData.append("title", "aaaaaaaaaaa");
+    formData.append("title", title);
 
-    formData.append("description", "bbbbbbbb");
+    formData.append("description", desc);
 
     let config = {
       headers: {
@@ -69,18 +88,33 @@ const Creators = React.memo(() => {
       },
     };
     setshowSpinner(true);
-    axios
-      .post("http://localhost:3000/creator/uploadContract", formData, config)
-      .then((response) => {
-        // this.setState({loading:false})
-        console.log(response);
-        setshowSpinner(false);
-      })
-      .catch((e) => {
-        setshowSpinner(false);
-        // this.setState({loading:false})
-        console.log(e);
-      });
+
+    let response;
+
+    try {
+      response = await axios.post(
+        "http://localhost:3000/creator/uploadContract",
+        formData,
+        config
+      );
+    } catch (e) {
+      setshowSpinner(false);
+      console.log(e);
+    }
+
+    setshowSpinner(true);
+
+    try {
+      console.log(response.data.contract.hash);
+      const ctr = Creator(creator.contractAddress);
+      await ctr.methods
+        .addHash(response.data.contract.hash)
+        .send({ from: accounts[0] });
+      setshowSpinner(false);
+    } catch (e) {
+      console.log(e);
+      setshowSpinner(false);
+    }
   };
 
   const transferHandler = async () => {
@@ -96,15 +130,21 @@ const Creators = React.memo(() => {
       .send({ from: accounts[0] });
   };
 
+  const h = hashs;
+
   let agreementArray = (
     <div>
-      {agreements.map((agreement) => (
+      {agreements.map((agreement, i) => (
+        // {const valid = (hasharr[0]==agreement.hash ? true : false)}
+
         <Agreement
           key={agreement._id}
           title={agreement.title}
           desc={agreement.description}
           url={agreement.fileUrl}
           hash={agreement.hash}
+          hashArr={hashs}
+          i={i}
         />
       ))}
     </div>
@@ -117,7 +157,15 @@ const Creators = React.memo(() => {
       <div className={styles.page}>
         <div className={styles.row2}>
           <Card2>
-            <img src={image} className={styles.image}></img>
+            {image.length ? (
+              <img
+                id="base64image"
+                src={`data:image/jpeg;base64,${image}`}
+                className={styles.image}
+              />
+            ) : (
+              <img src={image1} className={styles.image}></img>
+            )}
             <div className={styles.left}>Name</div>
             <div className={styles.right}>{creator.name}</div>
             <br />
@@ -146,9 +194,11 @@ const Creators = React.memo(() => {
                 <div className={styles.right}>{creator.contractAddress}</div>
               </div>
               <span className={styles.left}>ETH recieved</span>
-              <span className={styles.right}>1 ETH</span>
+              <span className={styles.right}>{eth}</span>
 
-              <button className={styles.button}>Transfer</button>
+              <button className={styles.button} onClick={transferHandler}>
+                Transfer
+              </button>
             </Card2>
           </div>
           <div className={styles.Files}>
@@ -157,11 +207,13 @@ const Creators = React.memo(() => {
                 type="text"
                 placeholder="Title"
                 className={styles.feild}
+                onChange={(event) => setTitle(event.target.value)}
               ></input>
               <input
                 type="text"
                 placeholder="Description"
                 className={styles.feild}
+                onChange={(event) => setDesc(event.target.value)}
               ></input>
               <input
                 type="file"
