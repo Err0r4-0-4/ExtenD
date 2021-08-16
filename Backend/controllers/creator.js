@@ -107,7 +107,7 @@ exports.uploadContract = async (req, res, next) => {
     });
     try {
       await contract.save();
-      res.status(200).send({ message: contract.id });
+      res.status(200).send({ message: contract });
     } catch (error) {
       res.status(400).send({ message: error.message });
     }

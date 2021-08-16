@@ -38,7 +38,9 @@ app.use(fileuploader());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
-
+app.get("/", (req, res, next) => {
+  res.send("UP!");
+});
 app.use("/user", userRoute);
 app.use("/creator", creatorRoute);
 // app.use("/van",vanRoute)
