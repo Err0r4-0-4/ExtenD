@@ -22,6 +22,7 @@ contract Factory {
 contract Creator {
     
       address public acc;
+      string[] public hash;
       
       function Creator(address _acc) public {
         acc = _acc;
@@ -40,5 +41,9 @@ contract Creator {
         uint256 amount = address(this).balance-100000000000000000;
          
         reciver.transfer(amount);
+    }
+    
+    function addHash(string _hash) public{
+          hash.push(_hash);
     }
 }

@@ -11,14 +11,20 @@ import Card2 from "../Ui/Card2";
 import Spinner from "../Ui/Spinner";
 
 const Creators = React.memo(() => {
+
   const [merch, setMerch] = useState("");
   const [creator, setCreator] = useState([]);
   const [agreements, setAgreements] = useState([]);
   const [showSpinner, setshowSpinner] = useState(false);
   const [eth, setEth] = useState("");
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+
+
   const buttonHandle = () => {
     <Redirect to="/create" />;
   };
+
   useEffect(async () => {
     const data = {
       id: localStorage.getItem("id"),
@@ -50,18 +56,21 @@ const Creators = React.memo(() => {
 
     const b = await ctr.methods.bal().call();
     setEth(b / 1000000000000000000);
+
+
   }, []);
 
-  const onUploadHandler = (event) => {
-    // this.setState({loading:true})
+  const onUploadHandler = async(event) => {
+
+    const accounts = await web3.eth.getAccounts();
 
     const formData = new FormData();
 
     formData.append("file", event.target.files[0]);
 
-    formData.append("title", "aaaaaaaaaaa");
+    formData.append("title", title);
 
-    formData.append("description", "bbbbbbbb");
+    formData.append("description", desc);
 
     let config = {
       headers: {
@@ -72,8 +81,8 @@ const Creators = React.memo(() => {
     axios
       .post("http://localhost:3000/creator/uploadContract", formData, config)
       .then((response) => {
-        // this.setState({loading:false})
         console.log(response);
+        
         setshowSpinner(false);
       })
       .catch((e) => {
@@ -81,7 +90,20 @@ const Creators = React.memo(() => {
         // this.setState({loading:false})
         console.log(e);
       });
+
+      setshowSpinner(true);
+
+      try{
+        const ctr = Creator(creator.contractAddress);
+        await ctr.methods.addHash(event.target.files[0]).send({ from: accounts[0] });
+        setshowSpinner(false);
+      }catch(e){
+        setshowSpinner(false);
+        console.log(e);
+      }
   };
+
+
 
   const transferHandler = async () => {
     const accounts = await web3.eth.getAccounts();
@@ -146,9 +168,9 @@ const Creators = React.memo(() => {
                 <div className={styles.right}>{creator.contractAddress}</div>
               </div>
               <span className={styles.left}>ETH recieved</span>
-              <span className={styles.right}>1 ETH</span>
+              <span className={styles.right}>{eth}</span>
 
-              <button className={styles.button}>Transfer</button>
+              <button className={styles.button} onClick={transferHandler}>Transfer</button>
             </Card2>
           </div>
           <div className={styles.Files}>
@@ -157,11 +179,13 @@ const Creators = React.memo(() => {
                 type="text"
                 placeholder="Title"
                 className={styles.feild}
+                onChange={event => setTitle(event.target.value)}
               ></input>
               <input
                 type="text"
                 placeholder="Description"
                 className={styles.feild}
+                onChange={event => setDesc(event.target.value)}
               ></input>
               <input
                 type="file"
