@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const merchandiseSchema = new Schema({
   userId: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+    type: String,
+    require: true,
   },
   title: {
     type: String,

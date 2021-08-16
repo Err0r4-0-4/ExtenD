@@ -3,7 +3,9 @@ import { NavLink, useLocation } from "react-router-dom";
 import styles from "./HeaderCreater.module.css";
 import Modal from "./Modal";
 import Img1 from "../Image/logoh.png";
+
 const HeaderCreater = () => {
+
   const [open, setOpen] = useState(false);
   const clickhandler = () => {
     setOpen(!open);
@@ -12,6 +14,10 @@ const HeaderCreater = () => {
   const location = useLocation();
   console.log(location);
   if (location.pathname !== "/create") header = true;
+
+  const signOutHandler = () => {
+    localStorage.clear();
+  }
 
   return (
     <>
@@ -53,10 +59,11 @@ const HeaderCreater = () => {
 
           <li>
             <NavLink
-              to=""
+              to="/"
               className={styles.link}
               activeClassName={styles.active}
               exact
+              onClick={signOutHandler}
             >
               Signout
             </NavLink>

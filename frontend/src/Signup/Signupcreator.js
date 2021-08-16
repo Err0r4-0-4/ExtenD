@@ -3,6 +3,7 @@ import axios from "axios";
 import styles from "../Pages/Login.module.css";
 import { BsFillExclamationCircleFill } from "react-icons/bs";
 import Spinner from "../Ui/Spinner";
+import {Redirect} from 'react-router-dom'
 
 const Signupcreator = () => {
   //Creator Login
@@ -10,6 +11,8 @@ const Signupcreator = () => {
   const [invalidstate, setinvalidstate] = useState(false);
   const [touched, Settouched] = useState(false);
   const [showSpinner, setshowSpinner] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
+
   const changedevent = (e) => {
     keystrikeSet(e.target.value);
     Settouched(false);
@@ -94,6 +97,8 @@ const Signupcreator = () => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("id", res.data.creatorId);
+        localStorage.setItem("creator", true);
+        setIsAuth(true)
         setshowSpinner(false);
         // this.setState({loading: false})
         // window.location.reload(false);
@@ -111,7 +116,9 @@ const Signupcreator = () => {
   const isInvalid3 = touched3 && invalidstate3;
 
   return (
+
     <form className={styles.form} onSubmit={formsubmission}>
+      {isAuth ? <Redirect to="creatorProfile"/> : null}
       <div className={styles.feildset}>
         <input
           type="email"

@@ -8,7 +8,8 @@ import Full from "./Full/Full";
 import CreatorProfile from './CreatorProfile/CreatorProfile';
 import History from "./History/History";
 import CreateMerch from './createMerch/createMerch';
-import Merch from './Merch/Merch'
+import Merch from './Merch/Merch';
+import Orders from './Orders/Orders'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/creatorProfile" exact component={CreatorProfile} />
           <Route path="/history" exact component={History} />
           <Route path="/merch" exact component={Merch} />
+          <Route path="/orders" exact component={Orders} />
           <Route path="/:id" exact component={Full} />
           {/* <Route path='/creator' exact component={Home}/> */}
         </Switch>

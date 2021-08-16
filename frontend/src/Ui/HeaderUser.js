@@ -3,6 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import styles from "./HeaderUser.module.css";
 import Modal from "./Modal";
 import Img1 from "../Image/logoh.png";
+
 const HeaderUser = () => {
   const [open, setOpen] = useState(false);
   const clickhandler = () => {
@@ -12,6 +13,12 @@ const HeaderUser = () => {
   const location = useLocation();
   console.log(location);
   if (location.pathname !== "/home") header = true;
+
+  const signOutHandler = () => {
+    console.log("signout");
+    localStorage.clear();
+  }
+
   return (
     <>
       <div className={header ? styles.header2 : styles.header}>
@@ -56,6 +63,7 @@ const HeaderUser = () => {
               className={styles.link}
               activeClassName={styles.active}
               exact
+              onClick={signOutHandler}
             >
               Signout
             </NavLink>
