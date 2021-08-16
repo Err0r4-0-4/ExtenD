@@ -55,23 +55,23 @@ const Footer = () => (
     <div className={styles.fitemsm}>
       <ul className={styles.fitemli}>
         <li>
-          <a href="#">
+          <a href="https://github.com/extend">
             <AiFillGitlab />
           </a>
         </li>
 
         <li>
-          <a href="#">
+          <a href="https://instagram.com/extend">
             <AiFillInstagram />
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="mailto:support@extend.com">
             <AiFillMail />
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="https://linkedin.com/extend">
             <AiFillLinkedin />
           </a>
         </li>
