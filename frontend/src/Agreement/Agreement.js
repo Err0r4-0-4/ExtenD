@@ -1,10 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Agreement.module.css";
+
 const HistoryCard = React.memo((props) => {
-  console.log(props.url);
+
+  const [valid, setValid] = useState(true);
+
+  // console.log(props.i);
+  // console.log(props.hashArr[props.i]);
+  // // console.log(props.hash)
+
+  // if(props.hash==props.hashArr[props.i]){
+  //   setValid(true)
+  // }
   return (
+
     <div className={styles.aggrement}>
+      {valid ? <div>YES</div> : <div>NO</div>}
       <div className={styles.title}>{props.title}</div>
       <div className={styles.dis}>{props.desc}</div>
       <button className={styles.button}>

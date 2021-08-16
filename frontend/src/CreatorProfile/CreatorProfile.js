@@ -19,8 +19,7 @@ const Creators = React.memo(() => {
   const [eth, setEth] = useState("");
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [hash, setHash] = useState("");
-
+  const [hashs, setHashs] = useState([]);
 
   const buttonHandle = () => {
     <Redirect to="/create" />;
@@ -38,10 +37,7 @@ const Creators = React.memo(() => {
     };
 
     let eth = await axios.post(
-      "http://localhost:3000/creator/creatorById",
-      data,
-      config
-    );
+      "http://localhost:3000/creator/creatorById",data,config);
     console.log(eth.data);
     setCreator(eth.data.creator);
 
@@ -57,7 +53,19 @@ const Creators = React.memo(() => {
 
     const b = await ctr.methods.bal().call();
     setEth(b / 1000000000000000000);
+////////////////////////////////////////////////////////
+    const count = await ctr.methods.hashCount().call();
 
+    let hasharray = [];
+
+    for(let i=0;i<count;i++){
+      const h = await ctr.methods.hash(i).call() 
+      hasharray.push(h)
+    }
+
+    setHashs(hasharray)
+
+    console.log(hashs)
 
   }, []);
 
@@ -79,27 +87,28 @@ const Creators = React.memo(() => {
       },
     };
     setshowSpinner(true);
-    axios
-      .post("http://localhost:3000/creator/uploadContract", formData, config)
-      .then((response) => {
-        console.log(response);
-        setHash(response.data.contract.hash)
-        setshowSpinner(false);
-      })
-      .catch((e) => {
-        setshowSpinner(false);
-        // this.setState({loading:false})
-        console.log(e);
-      });
+
+    let response;
+
+    try{
+      response = await  axios.post("http://localhost:3000/creator/uploadContract", formData, config)
+    }catch(e){
+      setshowSpinner(false);
+      console.log(e)
+    }
+   
+      
 
       setshowSpinner(true);
 
       try{
-        console.log(hash)
+        console.log(response.data.contract.hash)
         const ctr = Creator(creator.contractAddress);
-        await ctr.methods.addHash(hash).send({ from: accounts[0] });
+        await ctr.methods.addHash(response.data.contract.hash).send({ from: accounts[0] });
+        setshowSpinner(false);
       }catch(e){
         console.log(e);
+        setshowSpinner(false);
       }
   };
 
@@ -118,15 +127,22 @@ const Creators = React.memo(() => {
       .send({ from: accounts[0] });
   };
 
+  const h = hashs;
+
   let agreementArray = (
     <div>
-      {agreements.map((agreement) => (
+      {agreements.map((agreement, i) => (
+
+        // {const valid = (hasharr[0]==agreement.hash ? true : false)}
+
         <Agreement
           key={agreement._id}
           title={agreement.title}
           desc={agreement.description}
           url={agreement.fileUrl}
           hash={agreement.hash}
+          hashArr={hashs}
+          i={i}
         />
       ))}
     </div>
