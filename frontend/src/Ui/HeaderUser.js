@@ -17,7 +17,7 @@ const HeaderUser = () => {
   const signOutHandler = () => {
     console.log("signout");
     localStorage.clear();
-  }
+  };
 
   return (
     <>
@@ -56,7 +56,16 @@ const HeaderUser = () => {
               History
             </NavLink>
           </li>
-
+          <li>
+            <NavLink
+              to="/orders"
+              className={styles.link}
+              activeClassName={styles.active}
+              exact
+            >
+              Orders
+            </NavLink>
+          </li>
           <li>
             <NavLink
               to=""
@@ -68,16 +77,7 @@ const HeaderUser = () => {
               Signout
             </NavLink>
           </li>
-          {/* <li>
-        <NavLink
-          to=""
-          className={styles.link}
-          activeClassName={styles.active}
-          exact
-        >
-          +
-        </NavLink>
-      </li> */}
+          {/* */}
         </ul>
         <div className={styles.burger} onClick={clickhandler}>
           {open ? (

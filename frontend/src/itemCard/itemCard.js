@@ -3,7 +3,7 @@ import styles from "./itemCard.module.css";
 import web3 from "../ethereum/web3";
 import Spinner from "../Ui/Spinner";
 import Creator from "../ethereum/Creator";
-
+import Card2 from "../Ui/Card2";
 import axios from "axios";
 
 const Card = React.memo((props) => {
@@ -55,17 +55,33 @@ const Card = React.memo((props) => {
 
   return (
     <div>
-      {showSpinner ? <Spinner /> : ""}
-      <img
-        src={`data:image/jpeg;base64,${props.image}`}
-        className={styles.img}
-      />
+      <div className={styles.itemsC}>
+        <Card2>
+          {showSpinner ? <Spinner /> : ""}
+          <img
+            src={`data:image/jpeg;base64,${props.image}`}
+            className={styles.img}
+          />
+          <div className={styles.one}>
+            <div className={styles.left}>Tile</div>
+            <div className={styles.right}>{props.title}</div>
+          </div>
+          <div className={styles.one}>
+            <div className={styles.left}>Description</div>
 
-      <div>{props.title}</div>
-      <div>{props.desc}</div>
-      <div>{props.price}</div>
-      <button onClick={onBuyHandler}>Buy now</button>
-      {/* <div>{props.title}</div> */}
+            <div className={styles.right}>{props.desc}</div>
+          </div>
+          <div className={styles.one}>
+            <div className={styles.left}>Price</div>
+
+            <div className={styles.right}> {props.price} ETH</div>
+          </div>
+          <button onClick={onBuyHandler} className={styles.button3}>
+            Buy now
+          </button>
+          {/* <div>{props.title}</div> */}
+        </Card2>
+      </div>
     </div>
   );
 });

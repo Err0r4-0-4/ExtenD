@@ -1,0 +1,11 @@
+.modal {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  z-index: 300;
+  height: 85vh;
+  overflow: auto;
+  background-color: rgb(37, 37, 37);
+  width: 90%;
+  padding-top: 40px;
+}

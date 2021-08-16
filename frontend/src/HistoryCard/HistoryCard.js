@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Card from "../Ui/Card";
 import styles from "./HistoryCard.module.css";
 import image from "../Image/social2.png";
-import Slide from "react-reveal/Slide";
 const HistoryCard = React.memo((props) => {
   const months = [
     "Jan",
@@ -27,25 +26,25 @@ const HistoryCard = React.memo((props) => {
   console.log(year, date, month);
   console.log(props.url);
   return (
-    <Slide up>
-      <Card>
-        <div className={styles.card}>
-          <img src={image} className={styles.image}></img>
-        </div>
-        <div className={styles.text}>
-          <div className={styles.name}>{props.name}</div>
-          <div className={styles.dis}>{props.address}</div>
-        </div>
-        <div className={styles.cal}>
-          <div className={styles.amount}>{props.amount} ETH</div>
+    // <Slide up>
+    <Card>
+      <div className={styles.card}>
+        <img src={image} className={styles.image}></img>
+      </div>
+      <div className={styles.text}>
+        <div className={styles.name}>{props.name}</div>
+        <div className={styles.dis}>{props.address}</div>
+      </div>
+      <div className={styles.cal}>
+        <div className={styles.amount}>{props.amount} ETH</div>
 
-          <div className={styles.time}>{time}</div>
-          <div className={styles.date}>
-            {month} {date} {year}
-          </div>
+        <div className={styles.time}>{time}</div>
+        <div className={styles.date}>
+          {month} {date} {year}
         </div>
-      </Card>
-    </Slide>
+      </div>
+    </Card>
+    // </Slide>
   );
 });
 

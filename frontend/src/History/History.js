@@ -5,6 +5,7 @@ import HistoryCard from "../HistoryCard/HistoryCard";
 import EachPage from "../Ui/EachPage";
 import HeaderUser from "../Ui/HeaderUser";
 import Spinner from "../Ui/Spinner";
+import Footer from "../Ui/Footer";
 const History = React.memo(() => {
   const [transactions, setTransactions] = useState([]);
   const [showSpinner, setshowSpinner] = useState(false);
@@ -60,6 +61,7 @@ const History = React.memo(() => {
         <div className={styles.banner}>Previous Transactions</div>
         {TransactionArray}
       </EachPage>
+      <Footer />
     </div>
   );
 });

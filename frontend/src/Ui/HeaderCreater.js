@@ -5,7 +5,6 @@ import Modal from "./Modal";
 import Img1 from "../Image/logoh.png";
 
 const HeaderCreater = () => {
-
   const [open, setOpen] = useState(false);
   const clickhandler = () => {
     setOpen(!open);
@@ -17,7 +16,7 @@ const HeaderCreater = () => {
 
   const signOutHandler = () => {
     localStorage.clear();
-  }
+  };
 
   return (
     <>
@@ -38,13 +37,23 @@ const HeaderCreater = () => {
               Home
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink
               to="/historyCreator"
               className={styles.link}
               activeClassName={styles.active}
             >
               History
+            </NavLink>
+          </li> */}
+          <li>
+            <NavLink
+              to="/create"
+              className={styles.link}
+              activeClassName={styles.active}
+              exact
+            >
+              Merchandice
             </NavLink>
           </li>
           {/* <li>
@@ -68,16 +77,6 @@ const HeaderCreater = () => {
               Signout
             </NavLink>
           </li>
-          {/* <li>
-        <NavLink
-          to=""
-          className={styles.link}
-          activeClassName={styles.active}
-          exact
-        >
-          +
-        </NavLink>
-      </li> */}
         </ul>
         <div className={styles.burger} onClick={clickhandler}>
           {open ? (
