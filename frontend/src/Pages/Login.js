@@ -5,6 +5,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { MdCall } from "react-icons/md";
 import Img2 from "../Image/creator.png";
 import Img3 from "../Image/user.png";
+import Blob from "../Ui/List";
 
 import Img1 from "../Image/logo_.png";
 import Loginuser from "../Login/Loginuser";
@@ -79,6 +80,7 @@ const Login = () => {
         )}
 
         <div className={styles.profile}>
+          <Blob />
           {!but ? (
             <img src={Img3} alt="User" className={styles.img2} />
           ) : (
