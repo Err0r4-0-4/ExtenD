@@ -151,6 +151,7 @@ exports.getMerchandiseByuserId = async (req, res, next) => {
     let merchandises = await Merchandise.find({
       userId: req.body.id,
     });
+    console.log(req.body.id);
     res.status(200).send({ merchandises: merchandises });
     return;
   } catch (error) {
@@ -255,15 +256,9 @@ exports.addOrder = async (req, res, next) => {
 
 exports.getOrders = async (req, res, next) => {
   try {
-<<<<<<< HEAD
-    console.log(req.user.id)
-    let orders = Order.find({ userId: req.user.id });
-    console.log(orders)
-=======
     //const id = "61180dd1185a1131e477ebe8";
     let orders = Order.find({ userId: req.user.id });
     console.log(orders);
->>>>>>> 65209d8cd5f2a670b1444734e0a2918d71edfc40
     res.status(200).send({ orders: orders });
     return;
   } catch (error) {
