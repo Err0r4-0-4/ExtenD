@@ -12,12 +12,11 @@ const Logincreator = () => {
   const [keystroke, keystrikeSet] = useState("");
   const [invalidstate, setinvalidstate] = useState(false);
   const [interest, setInterest] = useState("");
-  
+
   const [touched, Settouched] = useState(false);
   const [showSpinner, setshowSpinner] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
   const [file, setFile] = useState({});
-
 
   const changedevent = (e) => {
     keystrikeSet(e.target.value);
@@ -148,12 +147,16 @@ const Logincreator = () => {
         from: accounts[0],
       });
 
+<<<<<<< HEAD
     setshowSpinner(true);
     await factory.methods.createCreator(keystroke3).send({
       from: accounts[0],
     });
 
     const count = await factory.methods.creatorCount().call();
+=======
+      const count = await factory.methods.creatorCount().call();
+>>>>>>> 46104a2c2160f2b7ed002e8564b13d7f3222045d
 
       address = await factory.methods.deployedCreators(count - 1).call();
     } catch (error) {
@@ -170,7 +173,10 @@ const Logincreator = () => {
     formData.append("fieldOfIntrest", interest);
 
     axios
-      .post("https://backend-jatingupta0214-gmailcom.vercel.app/creator/signup", formData)
+      .post(
+        "https://backend-jatingupta0214-gmailcom.vercel.app/creator/signup",
+        formData
+      )
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
@@ -181,26 +187,26 @@ const Logincreator = () => {
           email: keystroke2,
           password: keystroke4,
         };
-        
+
         axios
-          .post("https://backend-jatingupta0214-gmailcom.vercel.app/creator/login", data)
+          .post(
+            "https://backend-jatingupta0214-gmailcom.vercel.app/creator/login",
+            data
+          )
           .then((res) => {
             console.log(res);
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("id", res.data.creatorId);
             localStorage.setItem("creator", true);
-            setIsAuth(true)
-
+            setIsAuth(true);
           })
           .catch((err) => {
             console.log(err);
           });
-
       })
       .catch((err) => {
         console.log(err);
         setshowSpinner(false);
-
       });
   };
 
@@ -212,7 +218,7 @@ const Logincreator = () => {
 
   return (
     <form className={styles.form} onSubmit={formsubmission}>
-      {showSpinner ? <Spinner/> : null}
+      {showSpinner ? <Spinner /> : null}
       {isAuth ? <Redirect to="creatorProfile" /> : null}
       {showSpinner ? <Spinner /> : ""}
       <div className={styles.feildset}>
@@ -282,7 +288,7 @@ const Logincreator = () => {
           placeholder="Feild of Interest"
           value={interest}
           className={isInvalid5 ? styles.error : styles.feild}
-          onChange={event => setInterest(event.target.value)}
+          onChange={(event) => setInterest(event.target.value)}
           onBlur={blurevent5}
         />
         {isInvalid5 && (
