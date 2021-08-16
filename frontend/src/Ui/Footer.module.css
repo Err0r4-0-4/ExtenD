@@ -17,13 +17,14 @@
 
 .flex {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 20px 70px;
   flex-wrap: wrap;
 }
 
 .fitemli {
   list-style-type: none;
+  flex: 25%;
 }
 .fitems {
   margin: 10px 0;

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
 import { AiFillGitlab } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
@@ -12,40 +12,27 @@ const Footer = () => (
       <div className={styles.fitems}>
         <ul className={styles.fitemli}>
           <li>
-            <a href="#">Query</a>
+            <Link to="/creators">Creators</Link>
           </li>
 
           <li>
-            <a href="#">Bug Report</a>
+            <Link href="history">History</Link>
           </li>
           <li>
-            <a href="#">IIIT Vadodara</a>
-          </li>
-        </ul>
-      </div>
-      <div className={styles.fitems}>
-        <ul className={styles.fitemli}>
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <a href="#">SignOut</a>
+            <a href="#">Query</a>
           </li>
         </ul>
       </div>
       <div className={styles.fitems}>
         <ul className={styles.fitemli}>
           <li>
-            <a href="#">Office Order</a>
+            <Link href="/home">Home</Link>
           </li>
           <li>
-            <a href="#">Recent Orders</a>
+            <Link href="/orders">Orders</Link>
           </li>
           <li>
-            <a href="#">FAQs</a>
+            <Link to="/">Sign Out</Link>
           </li>
         </ul>
       </div>
@@ -78,7 +65,7 @@ const Footer = () => (
       </ul>
     </div>
     <br />
-    <div className={styles.last2}>...OFFICE ORDER MANAGEMENT...</div>
+    <div className={styles.last2}>...Extend...</div>
   </div>
 );
 
