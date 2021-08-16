@@ -22,7 +22,7 @@ const History = React.memo(() => {
     };
     setshowSpinner(true);
     let res = await axios.post(
-      "http://localhost:3000/creator/getTransaction",
+      "https://backend-jatingupta0214-gmailcom.vercel.app/creator/getTransaction",
       data,
       config
     );

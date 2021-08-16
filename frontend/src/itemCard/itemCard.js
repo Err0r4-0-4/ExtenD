@@ -5,9 +5,13 @@ import Spinner from "../Ui/Spinner";
 import Creator from "../ethereum/Creator";
 import Card2 from "../Ui/Card2";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 const Card = React.memo((props) => {
+
   const [showSpinner, setshowSpinner] = useState(false);
+  const [redirect, setRedirect] = useState(false);
+
   const onBuyHandler = async () => {
     const ctr = Creator(props.address);
 
@@ -26,12 +30,12 @@ const Card = React.memo((props) => {
     try {
       setshowSpinner(true);
       let res = await axios.post(
-        "http://localhost:3000/creator/addOrder",
+        "https://backend-jatingupta0214-gmailcom.vercel.app/creator/addOrder",
         data,
         config
       );
-
       console.log(res.data);
+      setRedirect(true)
 
       /////////////////////////
 
@@ -55,6 +59,7 @@ const Card = React.memo((props) => {
 
   return (
     <div>
+       {redirect ? <Redirect to="orders" /> : null}
       <div className={styles.itemsC}>
         <Card2>
           {showSpinner ? <Spinner /> : ""}

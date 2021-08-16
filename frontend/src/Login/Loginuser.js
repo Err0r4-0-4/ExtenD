@@ -75,7 +75,7 @@ const Loginuser = () => {
     };
     setshowSpinner(true);
     axios
-      .post("http://localhost:3000/user/signup", data)
+      .post("https://backend-jatingupta0214-gmailcom.vercel.app/user/signup", data)
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
@@ -124,7 +124,7 @@ const Loginuser = () => {
 
   return (
     <form className={styles.form} onSubmit={formsubmission}>
-      {isAuth ? <Redirect to="creators"/> : null}
+      {isAuth ? <Redirect to="home"/> : null}
       <div className={styles.feildset}>
         <input
           type="text"

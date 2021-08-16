@@ -20,7 +20,7 @@ const Orders = React.memo(() => {
       };
 
       const res = await axios.post(
-        "http://localhost:3000/creator/getOrders",
+        "https://backend-jatingupta0214-gmailcom.vercel.app/creator/getOrders",
         data,
         config
       );

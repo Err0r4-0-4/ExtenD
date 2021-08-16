@@ -35,7 +35,7 @@ const Full = React.memo((props) => {
     try {
       setshowSpinner(true);
       const meerch = await axios.post(
-        "http://localhost:3000/creator/getMerchandise",
+        "https://backend-jatingupta0214-gmailcom.vercel.app/creator/getMerchandise",
         data,
         config
       );
@@ -43,7 +43,7 @@ const Full = React.memo((props) => {
       setMerchs(meerch.data.merchandises);
 
       const res = await axios.post(
-        "http://localhost:3000/creator/creatorById",
+        "https://backend-jatingupta0214-gmailcom.vercel.app/creator/creatorById",
         data,
         config
       );
@@ -87,7 +87,7 @@ const Full = React.memo((props) => {
     };
 
     const res = await axios.post(
-      "http://localhost:3000/creator/addTransaction",
+      "https://backend-jatingupta0214-gmailcom.vercel.app/creator/addTransaction",
       data,
       config
     );

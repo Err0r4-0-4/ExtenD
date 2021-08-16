@@ -53,7 +53,7 @@ const HeaderUser = () => {
               className={styles.link}
               activeClassName={styles.active}
             >
-              History
+              My Transaction 
             </NavLink>
           </li>
           <li>

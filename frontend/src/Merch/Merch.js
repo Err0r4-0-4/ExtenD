@@ -15,7 +15,7 @@ const Merch = React.memo(() => {
           };
     
         // try{
-        //     const res = await axios.post("http://localhost:3000/creator/getMerchandise", data, config)
+        //     const res = await axios.post("https://backend-jatingupta0214-gmailcom.vercel.app/creator/getMerchandise", data, config)
         //     console.log(res)
         //  }catch(e){
         //      console.log("message")

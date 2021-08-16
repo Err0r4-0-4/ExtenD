@@ -12,7 +12,7 @@ const Creators = React.memo(() => {
   console.log("Log");
   useEffect(async () => {
     axios
-      .get("http://localhost:3000/creator/creators")
+      .get("https://backend-jatingupta0214-gmailcom.vercel.app/creator/creators")
       .then((res) => {
         setCreators(res.data);
         setshowSpinner(false);

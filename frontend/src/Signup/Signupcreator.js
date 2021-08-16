@@ -91,8 +91,9 @@ const Signupcreator = () => {
       password: keystroke3,
     };
     setshowSpinner(true);
+    
     axios
-      .post("http://localhost:3000/creator/login", data)
+      .post("https://backend-jatingupta0214-gmailcom.vercel.app/creator/login", data)
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
@@ -119,6 +120,7 @@ const Signupcreator = () => {
 
     <form className={styles.form} onSubmit={formsubmission}>
       {isAuth ? <Redirect to="creatorProfile"/> : null}
+      {showSpinner ? <Spinner/> : null}
       <div className={styles.feildset}>
         <input
           type="email"

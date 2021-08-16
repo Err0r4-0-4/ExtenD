@@ -11,10 +11,14 @@ const Logincreator = () => {
   //Creator Signup
   const [keystroke, keystrikeSet] = useState("");
   const [invalidstate, setinvalidstate] = useState(false);
+  const [interest, setInterest] = useState("");
+  
   const [touched, Settouched] = useState(false);
   const [showSpinner, setshowSpinner] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
   const [file, setFile] = useState({});
+
+
   const changedevent = (e) => {
     keystrikeSet(e.target.value);
     Settouched(false);
@@ -137,6 +141,8 @@ const Logincreator = () => {
       keystrikeSet5("");
     }
 
+    setshowSpinner(true);
+
     const accounts = await web3.eth.getAccounts();
     await factory.methods.createCreator(keystroke3).send({
       from: accounts[0],
@@ -146,16 +152,6 @@ const Logincreator = () => {
 
     const address = await factory.methods.deployedCreators(count - 1).call();
 
-    // console.log(address)
-
-    // const data = {
-    //   name: keystroke,
-    //   email: keystroke2,
-    //   password: keystroke4,
-    //   account: keystroke3,
-    //   contractAddress: address,
-    // };
-
     const formData = new FormData();
     formData.append("file", file);
     formData.append("name", keystroke);
@@ -163,23 +159,40 @@ const Logincreator = () => {
     formData.append("password", keystroke4);
     formData.append("account", keystroke3);
     formData.append("contractAddress", address);
-    setshowSpinner(true);
+    formData.append("fieldOfIntrest", interest);
+
     axios
-      .post("http://localhost:3000/creator/signup", formData)
+      .post("https://backend-jatingupta0214-gmailcom.vercel.app/creator/signup", formData)
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("id", res.data.creatorId);
         localStorage.setItem("creator", true);
-        setIsAuth(true);
-        setshowSpinner(false);
-        // this.setState({loading: false})
-        // window.location.reload(false);
+
+        const data = {
+          email: keystroke2,
+          password: keystroke4,
+        };
+        
+        axios
+          .post("https://backend-jatingupta0214-gmailcom.vercel.app/creator/login", data)
+          .then((res) => {
+            console.log(res);
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("id", res.data.creatorId);
+            localStorage.setItem("creator", true);
+            setIsAuth(true)
+
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+
       })
-      .then((err) => {
+      .catch((err) => {
         console.log(err);
-        // this.setState({loading: false})
-        // window.location.reload(false);
+        setshowSpinner(false);
+
       });
   };
 
@@ -191,6 +204,7 @@ const Logincreator = () => {
 
   return (
     <form className={styles.form} onSubmit={formsubmission}>
+      {showSpinner ? <Spinner/> : null}
       {isAuth ? <Redirect to="creatorProfile" /> : null}
       <div className={styles.feildset}>
         <input
@@ -256,9 +270,9 @@ const Logincreator = () => {
       <div className={styles.feildset}>
         <textarea
           placeholder="Feild of Interest"
-          value={keystroke5}
+          value={interest}
           className={isInvalid5 ? styles.error : styles.feild}
-          onChange={changedevent5}
+          onChange={event => setInterest(event.target.value)}
           onBlur={blurevent5}
         />
         {isInvalid5 && (

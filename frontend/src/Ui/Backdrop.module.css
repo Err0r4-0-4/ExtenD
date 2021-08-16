@@ -8,4 +8,6 @@
   /* background-color: rgba(0, 0, 0, 0.658); */
   transition: 1s all;
   backdrop-filter: blur(3px);
+  background-color: black;
+  opacity: 0.5;
 }

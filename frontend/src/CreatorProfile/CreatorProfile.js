@@ -37,7 +37,7 @@ const Creators = React.memo(() => {
     };
 
     let eth = await axios.post(
-      "http://localhost:3000/creator/creatorById",
+      "https://backend-jatingupta0214-gmailcom.vercel.app/creator/creatorById",
       data,
       config
     );
@@ -45,7 +45,7 @@ const Creators = React.memo(() => {
     setCreator(eth.data.creator);
 
     const cont = await axios.post(
-      "http://localhost:3000/creator/getContracts",
+      "https://backend-jatingupta0214-gmailcom.vercel.app/creator/getContracts",
       data,
       config
     );
@@ -93,7 +93,7 @@ const Creators = React.memo(() => {
 
     try {
       response = await axios.post(
-        "http://localhost:3000/creator/uploadContract",
+        "https://backend-jatingupta0214-gmailcom.vercel.app/creator/uploadContract",
         formData,
         config
       );
@@ -169,14 +169,9 @@ const Creators = React.memo(() => {
             <div className={styles.left}>Name</div>
             <div className={styles.right}>{creator.name}</div>
             <br />
-            <div className={styles.left}>Description</div>
+            <div className={styles.left}>About</div>
             <div className={styles.right}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged.
+             {creator.fieldOfIntrest}
             </div>
             <br />
 
