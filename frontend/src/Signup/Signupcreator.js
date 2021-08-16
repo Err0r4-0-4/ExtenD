@@ -116,12 +116,8 @@ const Signupcreator = () => {
 
   return (
     <form className={styles.form} onSubmit={formsubmission}>
-<<<<<<< HEAD
       {isAuth ? <Redirect to="creatorProfile"/> : null}
       {showSpinner ? <Spinner/> : null}
-=======
-      {isAuth ? <Redirect to="creatorProfile" /> : null}
->>>>>>> a1f5bd6316099f9dff610f6c63cff36953859ef7
       <div className={styles.feildset}>
         <input
           type="email"

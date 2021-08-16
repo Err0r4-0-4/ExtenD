@@ -148,18 +148,12 @@ const Logincreator = () => {
         from: accounts[0],
       });
 
-<<<<<<< HEAD
     setshowSpinner(true);
-
-    const accounts = await web3.eth.getAccounts();
     await factory.methods.createCreator(keystroke3).send({
       from: accounts[0],
     });
 
     const count = await factory.methods.creatorCount().call();
-=======
-      const count = await factory.methods.creatorCount().call();
->>>>>>> a1f5bd6316099f9dff610f6c63cff36953859ef7
 
       address = await factory.methods.deployedCreators(count - 1).call();
     } catch (error) {
@@ -173,10 +167,7 @@ const Logincreator = () => {
     formData.append("password", keystroke4);
     formData.append("account", keystroke3);
     formData.append("contractAddress", address);
-<<<<<<< HEAD
     formData.append("fieldOfIntrest", interest);
-=======
->>>>>>> a1f5bd6316099f9dff610f6c63cff36953859ef7
 
     axios
       .post("https://backend-jatingupta0214-gmailcom.vercel.app/creator/signup", formData)
@@ -207,10 +198,6 @@ const Logincreator = () => {
 
       })
       .catch((err) => {
-<<<<<<< HEAD
-=======
-        window.alert(err);
->>>>>>> a1f5bd6316099f9dff610f6c63cff36953859ef7
         console.log(err);
         setshowSpinner(false);
 
