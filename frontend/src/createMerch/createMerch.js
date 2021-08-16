@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "../Ui/Spinner";
 import styles from "./createMerch.module.css";
+import HeaderCreater from "../Ui/HeaderCreater";
 const Create = React.memo(() => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -46,22 +47,36 @@ const Create = React.memo(() => {
 
   return (
     <div>
-      {showSpinner ? <Spinner /> : ""}
-      <input
-        placeholder="title"
-        onChange={(event) => setTitle(event.target.value)}
-      />
-      <input
-        placeholder="desc"
-        onChange={(event) => setDesc(event.target.value)}
-      />
-      <input
-        placeholder="price"
-        onChange={(event) => setPrice(event.target.value)}
-      />
-      <input type="file" onChange={(event) => setFile(event.target.files[0])} />
+      <HeaderCreater />
+      <div className={styles.merch}>
+        {showSpinner ? <Spinner /> : ""}
+        <div className={styles.form}>
+          <input
+            placeholder="title"
+            className={styles.field}
+            onChange={(event) => setTitle(event.target.value)}
+          />
+          <input
+            className={styles.field}
+            placeholder="desc"
+            onChange={(event) => setDesc(event.target.value)}
+          />
+          <input
+            className={styles.field}
+            placeholder="price"
+            onChange={(event) => setPrice(event.target.value)}
+          />
+          <input
+            className={styles.field2}
+            type="file"
+            onChange={(event) => setFile(event.target.files[0])}
+          />
 
-      <button onClick={onSubmitHandler}>CREATE</button>
+          <button onClick={onSubmitHandler} className={styles.button}>
+            CREATE
+          </button>
+        </div>
+      </div>
     </div>
   );
 });

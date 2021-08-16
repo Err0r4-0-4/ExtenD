@@ -8,7 +8,10 @@ const HeaderCreater = () => {
   const clickhandler = () => {
     setOpen(!open);
   };
-  let header = true;
+  let header = false;
+  const location = useLocation();
+  console.log(location);
+  if (location.pathname !== "/create") header = true;
 
   return (
     <>
