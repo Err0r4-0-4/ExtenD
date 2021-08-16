@@ -59,7 +59,7 @@ const Card = React.memo((props) => {
 
   return (
     <div>
-       {redirect ? <Redirect to="orders" /> : null}
+       {/* {redirect ? <Redirect to="orders" /> : null} */}
       <div className={styles.itemsC}>
         <Card2>
           {showSpinner ? <Spinner /> : ""}

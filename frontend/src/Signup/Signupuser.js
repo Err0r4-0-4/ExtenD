@@ -120,13 +120,8 @@ const Signupuser = () => {
 
   return (
     <form className={styles.form} onSubmit={formsubmission}>
-<<<<<<< HEAD
       {showSpinner ? <Spinner/> : null}
       {isAuth ? <Redirect to="home"/> : null}
-=======
-      {showSpinner ? <Spinner /> : null}
-      {isAuth ? <Redirect to="home" /> : null}
->>>>>>> 46104a2c2160f2b7ed002e8564b13d7f3222045d
       <div className={styles.feildset}>
         <input
           type="email"

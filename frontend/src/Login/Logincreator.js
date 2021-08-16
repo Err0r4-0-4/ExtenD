@@ -147,16 +147,12 @@ const Logincreator = () => {
         from: accounts[0],
       });
 
-<<<<<<< HEAD
     setshowSpinner(true);
     await factory.methods.createCreator(keystroke3).send({
       from: accounts[0],
     });
 
     const count = await factory.methods.creatorCount().call();
-=======
-      const count = await factory.methods.creatorCount().call();
->>>>>>> 46104a2c2160f2b7ed002e8564b13d7f3222045d
 
       address = await factory.methods.deployedCreators(count - 1).call();
     } catch (error) {
