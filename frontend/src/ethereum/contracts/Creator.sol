@@ -23,6 +23,7 @@ contract Creator {
     
       address public acc;
       string[] public hash;
+      uint public hashCount;
       
       function Creator(address _acc) public {
         acc = _acc;
@@ -45,5 +46,6 @@ contract Creator {
     
     function addHash(string _hash) public{
           hash.push(_hash);
+          hashCount++;
     }
 }
