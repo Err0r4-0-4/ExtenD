@@ -107,7 +107,11 @@ exports.uploadContract = async (req, res, next) => {
     });
     try {
       await contract.save();
+<<<<<<< HEAD
+      res.status(200).send({ message: contract });
+=======
       res.status(200).send({ contract: contract });
+>>>>>>> 2e0f907b029e0ed3a1fafbb014139a2b87061643
     } catch (error) {
       res.status(400).send({ message: error.message });
     }
