@@ -9,15 +9,19 @@
 .feildset {
   position: relative;
 }
-
+.form textarea {
+  max-height: 50px;
+  overflow: auto;
+}
 .form .feild {
   display: block;
   width: 80%;
-  margin: 20px auto 30px;
+  margin: 15px auto 25px;
   padding: 10px 10px 5px;
   border: none;
   border-bottom: 2px solid #48b9db;
 }
+
 .form .feild:focus {
   outline: none;
   border: none;
@@ -34,7 +38,7 @@
 .form .buttonred {
   display: block;
   width: 80%;
-  margin: 40px auto 0;
+  margin: 20px auto 0;
   padding: 10px;
   background-color: #48b9db;
   border: none;
@@ -138,4 +142,25 @@
   .form a:active {
     font-size: 14px;
   }
+}
+
+.choose {
+  display: block;
+  width: 80%;
+  margin: 20px auto 20px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #5aadf0;
+  padding-top: 0.5px;
+  color: #2387a5;
+  font-weight: 400;
+  padding: 1px;
+}
+
+.form .choose::file-selector-button {
+  background-color: #48b9db;
+  border: none;
+}
+.form .choose::file-selector-button:hover {
+  background-color: #2387a5;
+  border: none;
 }

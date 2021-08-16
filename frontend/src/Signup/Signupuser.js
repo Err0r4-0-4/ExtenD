@@ -3,7 +3,7 @@ import styles from "../Pages/Login.module.css";
 import axios from "axios";
 import { BsFillExclamationCircleFill } from "react-icons/bs";
 import Spinner from "../Ui/Spinner";
-import {Redirect} from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 
 const Signupuser = () => {
   //Public Login
@@ -79,12 +79,13 @@ const Signupuser = () => {
         console.log(res.data.token);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("creator", false);
-        setIsAuth(true)
+        setIsAuth(true);
         setshowSpinner(false);
         // this.setState({loading: false})
         // window.location.reload(false);
       })
-      .then((err) => {
+      .catch((err) => {
+        window.alert(err);
         console.log(err);
         setshowSpinner(false);
         // this.setState({loading: false})
@@ -115,10 +116,13 @@ const Signupuser = () => {
   const isInvalid3 = touched3 && invalidstate3;
 
   return (
-
     <form className={styles.form} onSubmit={formsubmission}>
+<<<<<<< HEAD
       {showSpinner ? <Spinner/> : null}
       {isAuth ? <Redirect to="home"/> : null}
+=======
+      {isAuth ? <Redirect to="creators" /> : null}
+>>>>>>> a1f5bd6316099f9dff610f6c63cff36953859ef7
       <div className={styles.feildset}>
         <input
           type="email"

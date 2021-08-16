@@ -189,7 +189,7 @@ const Creators = React.memo(() => {
                 <div className={styles.right}>{creator.contractAddress}</div>
               </div>
               <span className={styles.left}>ETH recieved</span>
-              <span className={styles.right}>{eth}</span>
+              <span className={styles.right}>{eth} ETH</span>
 
               <button className={styles.button} onClick={transferHandler}>
                 Transfer

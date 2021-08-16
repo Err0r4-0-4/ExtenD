@@ -88,6 +88,7 @@ exports.getCreators = async (req, res, next) => {
 
 exports.getCreatorById = async (req, res, next) => {
   try {
+    console.log(req.body.id);
     let creator = await Creator.findById(req.body.id);
     res.status(200).send({ creator: creator });
     return;

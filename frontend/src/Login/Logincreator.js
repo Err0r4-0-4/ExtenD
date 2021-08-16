@@ -140,7 +140,15 @@ const Logincreator = () => {
       console.log(keystroke5);
       keystrikeSet5("");
     }
+    let address;
+    try {
+      setshowSpinner(true);
+      const accounts = await web3.eth.getAccounts();
+      await factory.methods.createCreator(keystroke3).send({
+        from: accounts[0],
+      });
 
+<<<<<<< HEAD
     setshowSpinner(true);
 
     const accounts = await web3.eth.getAccounts();
@@ -149,8 +157,14 @@ const Logincreator = () => {
     });
 
     const count = await factory.methods.creatorCount().call();
+=======
+      const count = await factory.methods.creatorCount().call();
+>>>>>>> a1f5bd6316099f9dff610f6c63cff36953859ef7
 
-    const address = await factory.methods.deployedCreators(count - 1).call();
+      address = await factory.methods.deployedCreators(count - 1).call();
+    } catch (error) {
+      setshowSpinner(false);
+    }
 
     const formData = new FormData();
     formData.append("file", file);
@@ -159,7 +173,10 @@ const Logincreator = () => {
     formData.append("password", keystroke4);
     formData.append("account", keystroke3);
     formData.append("contractAddress", address);
+<<<<<<< HEAD
     formData.append("fieldOfIntrest", interest);
+=======
+>>>>>>> a1f5bd6316099f9dff610f6c63cff36953859ef7
 
     axios
       .post("https://backend-jatingupta0214-gmailcom.vercel.app/creator/signup", formData)
@@ -190,6 +207,10 @@ const Logincreator = () => {
 
       })
       .catch((err) => {
+<<<<<<< HEAD
+=======
+        window.alert(err);
+>>>>>>> a1f5bd6316099f9dff610f6c63cff36953859ef7
         console.log(err);
         setshowSpinner(false);
 
@@ -206,6 +227,7 @@ const Logincreator = () => {
     <form className={styles.form} onSubmit={formsubmission}>
       {showSpinner ? <Spinner/> : null}
       {isAuth ? <Redirect to="creatorProfile" /> : null}
+      {showSpinner ? <Spinner /> : ""}
       <div className={styles.feildset}>
         <input
           type="text"
@@ -245,6 +267,7 @@ const Logincreator = () => {
           onChange={changedevent3}
           onBlur={blurevent3}
         />
+
         {isInvalid3 && (
           <p className={styles.error2}>
             <BsFillExclamationCircleFill />
@@ -281,6 +304,11 @@ const Logincreator = () => {
           </p>
         )}
       </div>
+      <input
+        type="file"
+        onChange={(event) => setFile(event.target.files[0])}
+        className={styles.choose}
+      />
       <button
         className={
           isInvalid || isInvalid2 || isInvalid3 || isInvalid4 || isInvalid5
@@ -290,11 +318,6 @@ const Logincreator = () => {
       >
         LOGIN
       </button>
-      <div className={styles.anchor}>
-        <a href="#">Error Encountered</a>
-        <a href="#">Forgot Password ?</a>
-      </div>
-      <input type="file" onChange={(event) => setFile(event.target.files[0])} />
     </form>
   );
 };
