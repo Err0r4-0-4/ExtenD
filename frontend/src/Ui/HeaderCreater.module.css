@@ -10,7 +10,7 @@
   background-color: transparent;
   position: absolute;
   top: 0;
-  z-index: 200;
+  z-index: 600;
 }
 .header2 {
   background-color: white;
@@ -109,7 +109,7 @@ li .link:visited {
   display: block;
   color: #2594b6;
 }
-@media only screen and (max-width: 920px) {
+@media only screen and (max-width: 1064px) {
   .logo_ {
     flex: 20%;
   }

@@ -1,0 +1,96 @@
+.merch {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.918), rgba(0, 0, 0, 0.596)),
+    url("../Image/shop.jpg");
+  background-position: center;
+  height: 100vh;
+  background-size: cover;
+  padding-top: 160px;
+  font-size: 16px;
+}
+
+.form {
+  border-radius: 5px;
+  width: 60%;
+  min-width: 840px;
+  margin: auto;
+  background-color: rgba(252, 248, 248, 0.808);
+  padding-top: 1px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.field {
+  display: block;
+  width: 80%;
+  margin: 30px auto;
+  border-bottom: 1px solid;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  border-bottom: 1px solid #12578f;
+}
+.field:focus {
+  outline: none;
+  border-bottom: 2px solid #12578f;
+  padding-bottom: 4px;
+}
+
+.field::placeholder {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.field:focus::placeholder {
+  color: black;
+}
+
+.form .button {
+  font-size: 16px;
+  width: 80%;
+  margin: 10px 10% 30px;
+  padding: 5px;
+  color: white;
+  background-color: #12578f;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.form .button:hover {
+  background-color: #134b79;
+  letter-spacing: 1px;
+}
+
+.field2 {
+  display: block;
+  width: 80%;
+  margin: 40px auto 30px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #134b79;
+  padding-top: 0.5px;
+  color: #12578f;
+  font-weight: 600;
+  padding: 5px;
+}
+
+@media all and (max-width: 900px) {
+  .form {
+    width: 90%;
+    min-width: 360px;
+  }
+}
+
+@media all and (max-width: 650px) {
+  .field2 {
+    font-weight: 400;
+  }
+
+  .merch {
+    font-size: 14px;
+  }
+}

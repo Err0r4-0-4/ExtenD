@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styles from "./Agreement.module.css";
 
 const HistoryCard = React.memo((props) => {
-
   const [valid, setValid] = useState(true);
 
   // console.log(props.i);
@@ -14,9 +13,12 @@ const HistoryCard = React.memo((props) => {
   //   setValid(true)
   // }
   return (
-
     <div className={styles.aggrement}>
-      {valid ? <div>YES</div> : <div>NO</div>}
+      {valid ? (
+        <div className={styles.yes}></div>
+      ) : (
+        <div className={styles.no}></div>
+      )}
       <div className={styles.title}>{props.title}</div>
       <div className={styles.dis}>{props.desc}</div>
       <button className={styles.button}>

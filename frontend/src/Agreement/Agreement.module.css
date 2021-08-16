@@ -47,3 +47,19 @@
   font-size: 10px;
   text-align: center;
 }
+
+.yes,
+.no {
+  height: 15px;
+  width: 15px;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  background-color: rgb(42, 185, 42);
+  margin: 10px 20px;
+}
+.no {
+  background-color: rgb(230, 80, 80);
+}

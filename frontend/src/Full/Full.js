@@ -4,17 +4,23 @@ import axios from "axios";
 import web3 from "../ethereum/web3";
 import Spinner from "../Ui/Spinner";
 import styles from "./Full.module.css";
-import image from "../Image/doctors.png";
+import image from "../Image/social2.png";
 import Creator from "../ethereum/Creator";
 import Card from "../itemCard/itemCard";
-
+import HeaderUser from "../Ui/HeaderUser";
+import EachPage from "../Ui/EachPage";
+import Card2 from "../Ui/Card2";
+import Modal3 from "../Ui/Modal3";
 const Full = React.memo((props) => {
-
+  const [show, setShow] = useState(false);
+  const clickHandler = () => {
+    setShow(!show);
+  };
   const [creator, setCreator] = useState({});
   const [amount, setAmount] = useState({});
   const [merchs, setMerchs] = useState([]);
   const [showSpinner, setshowSpinner] = useState(false);
-  
+
   useEffect(async () => {
     const data = {
       id: props.match.params.id,
@@ -105,35 +111,64 @@ const Full = React.memo((props) => {
 
   return (
     <div>
-      {showSpinner ? <Spinner /> : ""}
-      <img src={image} className={styles.image}></img>
-      <div>Name</div>
-      <div>{creator.name}</div>
+      <HeaderUser />
+      <EachPage>
+        <div className={styles.card2}>
+          <Card2>
+            {showSpinner ? <Spinner /> : ""}
+            <img src={image} className={styles.image}></img>
+            <div className={styles.one}>
+              <div className={styles.left}>Name</div>
+              <div className={styles.right}>{creator.name}</div>
+            </div>
+            <div className={styles.one}>
+              <div className={styles.left}>description</div>
+              <div className={styles.right}>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged.
+              </div>
+            </div>
+            <div className={styles.one}>
+              <div className={styles.left}>Email</div>
+              <div className={styles.right}>{creator.email}</div>
+            </div>
+            <div className={styles.one}>
+              <div className={styles.left}>Account</div>
+              <div className={styles.right}>{creator.contractAddress}</div>
+            </div>
+            <div className={styles.left2}>Tip the Creator</div>
 
-      <div>description</div>
-      <div>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged.
-      </div>
-
-      <div>Email</div>
-      <div>{creator.email}</div>
-
-      <div>Account address</div>
-      <div>{creator.contractAddress}</div>
-
-      <input
-        placeholder="how much you want to tip"
-        onChange={(event) => setAmount(event.target.value)}
-      />
-
-      <button onClick={tipHandler}>Tip</button>
-
-      {items}
+            <div className={styles.two}>
+              <input
+                type="number"
+                placeholder="Tip in ETH"
+                onChange={(event) => setAmount(event.target.value)}
+              />
+              <div className={styles.eth}>ETH</div>
+              <button onClick={tipHandler}>Tip</button>
+            </div>
+          </Card2>
+        </div>
+        <div className={show ? styles.full : styles.half}>
+          <Card2>
+            {show ? (
+              <Modal3>{items ? items : <p>No items to display</p>}</Modal3>
+            ) : (
+              <p>Click to show merchandise</p>
+            )}
+            <button
+              className={show ? styles.buttonfixed : styles.button}
+              onClick={clickHandler}
+            >
+              {show ? "Hide Merchandise" : "Show Merchandise"}
+            </button>
+          </Card2>
+        </div>
+      </EachPage>
     </div>
   );
 });

@@ -82,6 +82,7 @@ input[type="file"]::file-selector-button:hover {
 .feild::placeholder {
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-size: 14px;
 }
 .feild:focus {
   outline: none;
@@ -139,4 +140,15 @@ input[type="file"]::file-selector-button:hover {
 .button:hover {
   background-color: #0c4574;
   letter-spacing: 1px;
+}
+
+.merchand a:link,
+.merchand a:visited {
+  display: inline-block;
+  min-width: 80%;
+  width: 80%;
+  margin-left: 10%;
+  text-decoration: none;
+  text-align: center;
+  padding: 6px;
 }

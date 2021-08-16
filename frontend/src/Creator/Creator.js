@@ -13,6 +13,7 @@ import styles from "./Creator.module.css";
 import Card from "../Ui/Card";
 const Creators = React.memo((props) => {
   return (
+    // <Slide up>
     <Card>
       {props.image ? (
         <img
@@ -60,6 +61,7 @@ const Creators = React.memo((props) => {
         </div>
       </div>
     </Card>
+    // </Slide>
   );
 });
 

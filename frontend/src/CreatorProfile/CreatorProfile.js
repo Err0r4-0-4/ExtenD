@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import web3 from "../ethereum/web3";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import Creator from "../ethereum/Creator";
 import HeaderCreater from "../Ui/HeaderCreater";
 import styles from "./CreatorProfile.module.css";
@@ -194,7 +194,7 @@ const Creators = React.memo(() => {
                 <div className={styles.right}>{creator.contractAddress}</div>
               </div>
               <span className={styles.left}>ETH recieved</span>
-              <span className={styles.right}>{eth}</span>
+              <span className={styles.right}>{eth} ETH</span>
 
               <button className={styles.button} onClick={transferHandler}>
                 Transfer
@@ -225,9 +225,9 @@ const Creators = React.memo(() => {
 
           <div className={styles.merchand}>
             <Card2>
-              <button className={styles.button} onClick={buttonHandle}>
-                My Merchandice
-              </button>
+              <Link to="/create" className={styles.button}>
+                Add More Merchandice
+              </Link>
             </Card2>
           </div>
         </div>
